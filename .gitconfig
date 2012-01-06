@@ -1,0 +1,21 @@
+[user]
+        name = Aleksander Sumowski
+        email = 
+
+
+[alias]
+	co = checkout
+	gerrit = push origin HEAD:refs/for/master
+	br = branch
+	st = status
+	df = diff
+        praise = blame
+
+[apply]
+        whitespace = strip
+
+[pager]
+        color = true
+
+[status]
+        color = auto
