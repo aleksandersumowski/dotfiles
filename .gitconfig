@@ -5,7 +5,6 @@
 
 [alias]
 	co = checkout
-	gerrit = push origin HEAD:refs/for/master
 	br = branch
 	st = status
 	df = diff
