@@ -10,7 +10,7 @@ set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-:set scrolloff=10
+:set scrolloff=5
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 set hlsearch
 set incsearch
@@ -29,7 +29,6 @@ set laststatus=2  "always display status line
 set statusline=%{fugitive#statusline()}%F
 
 "persistent undo
-set backupdir=~/tmp
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
@@ -45,6 +44,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
  " My Bundles here:
  "
  " original repos on github
+ Bundle 'jcf/vim-latex'
  Bundle 'tpope/vim-fugitive'
  Bundle 'tpope/vim-surround'
  Bundle 'Lokaltog/vim-easymotion'
@@ -56,5 +56,6 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
  Bundle 'L9'
  Bundle 'FuzzyFinder'
 
-:syntax on
  filetype plugin indent on     " required! 
+ filetype on
+:syntax on
