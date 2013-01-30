@@ -10,12 +10,9 @@ set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-:set scrolloff=5
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+set scrolloff=5
 set hlsearch
 set incsearch
-
-colorscheme wombat
 
 let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 1000
@@ -34,28 +31,31 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
- set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
- " let Vundle manage Vundle
- " required! 
- Bundle 'gmarik/vundle'
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
 
- " My Bundles here:
- "
- " original repos on github
- Bundle 'jcf/vim-latex'
- Bundle 'tpope/vim-fugitive'
- Bundle 'tpope/vim-surround'
- Bundle 'Lokaltog/vim-easymotion'
- Bundle 'fholgado/minibufexpl.vim.git'
- Bundle 'sjl/gundo.vim'
- Bundle 'derekwyatt/vim-scala'
+" My Bundles here:
+"
+" original repos on github
+Bundle 'jcf/vim-latex'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'fholgado/minibufexpl.vim.git'
+Bundle 'sjl/gundo.vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'altercation/vim-colors-solarized'
 
- " vim-scripts repos
- Bundle 'L9'
- Bundle 'FuzzyFinder'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
 
- filetype plugin indent on     " required! 
- filetype on
-:syntax on
+filetype plugin indent on     " required! 
+filetype on
+syntax enable
+set background=dark
+colorscheme solarized

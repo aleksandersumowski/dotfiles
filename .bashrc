@@ -20,7 +20,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-set -o vi
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -37,7 +36,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -102,11 +101,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-export WORKON_HOME=~/envs
-source /usr/local/bin/virtualenvwrapper.sh
-workon daryl
-
-PATH=/opt/erlang/bin:"${PATH}"
 
 if [ "$color_prompt" = yes ]; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
@@ -118,3 +112,6 @@ PS1='[\u@\h`__git_ps1` \W]\$ '
 
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -a'
 
+set -o vi
+export WORKON_HOME=~/envs
+export LFS=/mnt/
