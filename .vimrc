@@ -27,6 +27,8 @@ set statusline=%{fugitive#statusline()}%F
 
 "persistent undo
 set undodir=~/.vim/undodir
+set backupdir=~/.vim/backup
+set directory=~/.vim/swapfiles
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
@@ -44,6 +46,9 @@ Bundle 'gmarik/vundle'
 Bundle 'jcf/vim-latex'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-foreplay'
+Bundle 'tpope/vim-classpath'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'fholgado/minibufexpl.vim.git'
 Bundle 'sjl/gundo.vim'
