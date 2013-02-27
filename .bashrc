@@ -111,7 +111,8 @@ fi
 PS1='[\u@\h`__git_ps1` \W]\$ '
 
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -a'
+alias gr="git pull --rebase"
 
 set -o vi
 export WORKON_HOME=~/envs
-export LFS=/mnt/
+export LFS=/mnt/lfs

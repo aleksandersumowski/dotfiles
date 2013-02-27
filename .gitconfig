@@ -9,6 +9,8 @@
 	st = status
 	df = diff
         praise = blame
+    up = log origin/master..master
+    reb = pull --rebase
 
 [apply]
         whitespace = strip

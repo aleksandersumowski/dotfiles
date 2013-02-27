@@ -1,3 +1,4 @@
+
 set clipboard=unnamed
 set nocompatible               " be iMproved
 set nu
@@ -26,6 +27,13 @@ set laststatus=2  "always display status line
 set statusline=%{fugitive#statusline()}%F
 
 "persistent undo
+"if !isdirectory("~/.vim")
+"    call mkdir("~/.vim", "p")
+"    call mkdir("~/.vim/undodir", "p")
+"    call mkdir("~/.vim/backup", "p")
+"    call mkdir("~/.vim/swapfiles", "p")
+"endif
+
 set undodir=~/.vim/undodir
 set backupdir=~/.vim/backup
 set directory=~/.vim/swapfiles
@@ -36,28 +44,22 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
-" original repos on github
+Bundle 'L9'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'fholgado/minibufexpl.vim.git'
+Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'guns/vim-clojure-static'
+Bundle 'jboyens/vim-stringtemplate'
 Bundle 'jcf/vim-latex'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-foreplay'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-classpath'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'fholgado/minibufexpl.vim.git'
-Bundle 'sjl/gundo.vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'altercation/vim-colors-solarized'
-
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
 
 filetype plugin indent on     " required! 
 filetype on
