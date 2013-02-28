@@ -98,8 +98,8 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+if [ -f /usr/local/etc/bash_completion ] && ! shopt -oq posix; then
+    . /usr/local/etc/bash_completion
 fi
 
 if [ "$color_prompt" = yes ]; then
@@ -116,3 +116,4 @@ alias gr="git pull --rebase"
 set -o vi
 export WORKON_HOME=~/envs
 export LFS=/mnt/lfs
+source ~/tools/dotfiles/git-prompt.sh
