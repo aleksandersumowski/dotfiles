@@ -13,8 +13,7 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE="no stifling please"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -117,3 +116,5 @@ set -o vi
 export WORKON_HOME=~/envs
 export LFS=/mnt/lfs
 source ~/tools/dotfiles/git-prompt.sh
+PS1="\[\033[G\]$PS1"
+
