@@ -111,6 +111,8 @@ PS1='[\u@\h`__git_ps1` \W]\$ '
 
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -a'
 alias gr="git pull --rebase"
+alias vc="vim -u ~/.vim_clojure/vimrc.vim"
+alias fin="growlnotify -m finished -t  finished"
 
 set -o vi
 export WORKON_HOME=~/envs
