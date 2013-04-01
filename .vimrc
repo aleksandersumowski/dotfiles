@@ -1,5 +1,6 @@
-
-set clipboard=unnamed
+if $TMUX == ''
+        set clipboard+=unnamed
+endif
 set nocompatible               " be iMproved
 set nu
 filetype off                   " required!
