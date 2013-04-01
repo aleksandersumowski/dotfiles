@@ -10,4 +10,4 @@ esac
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/usr/local/bin
