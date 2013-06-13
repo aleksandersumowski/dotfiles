@@ -10,4 +10,10 @@ esac
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/usr/local/bin
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/usr/local/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.Framework/Versions/CurrentJDK/Home
+bindkey -v
+
+bindkey "^R" history-incremental-search-backward
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
