@@ -38,28 +38,11 @@ if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2
 endif
 
-" Fix Cursor in TMUX
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
 " keyboard shortcuts
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-"persistent undo
-"if !isdirectory("~/.vim")
-"    call mkdir("~/.vim", "p")
-"    call mkdir("~/.vim/undodir", "p")
-"    call mkdir("~/.vim/backup", "p")
-"    call mkdir("~/.vim/swapfiles", "p")
-"endif
 
 set undodir=~/.vim/undodir
 set backupdir=~/.vim/backup
@@ -70,16 +53,19 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 let mapleader = ','
 nnoremap S diw"0P
-nmap <leader>l :Align
-nmap <leader>a :Ack 
-nmap <leader>g :ToggleGitGutter<CR>
+nmap <leader>a :Ag
+nmap <leader>g :GundoToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>r :Require<CR>
+nmap <leader>e :Eval<CR>
 
 
 
 let g:ackprg = 'ag --nogroup --column'
 let g:gitgutter_enabled = 0
+let g:paredit_shortmaps = 1
+let g:paredit_smartjump = 1
 autocmd VimResized * :wincmd =
 
 set rtp+=~/.vim/bundle/vundle/
@@ -87,16 +73,18 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'L9'
-
+Bundle 'paredit.vim'
+Bundle 'nanki/treetop.vim'
+Bundle 'jgdavey/tslime.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'fholgado/minibufexpl.vim.git'
 Bundle 'guns/vim-clojure-static'
 Bundle 'jisaacks/GitGutter'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-classpath'
@@ -106,9 +94,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Align'
+Bundle 'altercation/vim-colors-solarized'
 
-filetype plugin indent on     " required! 
+filetype plugin indent on
 filetype on
 set background=dark
 colorscheme solarized
-
