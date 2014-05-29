@@ -11,6 +11,7 @@ alias l='ls -CF'
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -a'
 alias gr="git pull --rebase"
 alias vc="vim -u ~/.vim_clojure/vimrc.vim"
+alias f="find . -iname "
 
 #command finished notification
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

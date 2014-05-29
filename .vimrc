@@ -25,7 +25,7 @@ set tabstop=8
 set textwidth=79
 
 "vim command completion
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -64,7 +64,6 @@ nmap <leader>e :Eval<CR>
 
 let g:ackprg = 'ag --nogroup --column'
 let g:gitgutter_enabled = 0
-let g:paredit_shortmaps = 1
 let g:paredit_smartjump = 1
 autocmd VimResized * :wincmd =
 
