@@ -44,9 +44,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-set undodir=~/.vim/undodir
-set backupdir=~/.vim/backup
-set directory=~/.vim/swapfiles
+set undodir=~/.vim/undodir//
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swapfiles//
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
@@ -67,35 +67,40 @@ let g:gitgutter_enabled = 0
 let g:paredit_smartjump = 1
 autocmd VimResized * :wincmd =
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/tools/typescript-tools/
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'L9'
-Bundle 'paredit.vim'
-Bundle 'nanki/treetop.vim'
-Bundle 'jgdavey/tslime.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'fholgado/minibufexpl.vim.git'
-Bundle 'guns/vim-clojure-static'
-Bundle 'jisaacks/GitGutter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'rking/ag.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/Align'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'moll/vim-node'
+Plugin 'L9'
+Plugin 'paredit.vim'
+Plugin 'nanki/treetop.vim'
+Plugin 'jgdavey/tslime.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'fholgado/minibufexpl.vim.git'
+Plugin 'guns/vim-clojure-static'
+Plugin 'jisaacks/GitGutter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/Align'
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()
 
 filetype plugin indent on
-filetype on
 set background=dark
 colorscheme solarized
+au BufRead,BufNewFile *.ts        setlocal filetype=typescript
