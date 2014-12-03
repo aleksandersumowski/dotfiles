@@ -18,5 +18,6 @@ bindkey "^R" history-incremental-search-backward
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export PATH="~/.rbenv/bin:/usr/local/opt/ruby/bin:/usr/local/heroku/bin:/usr/local/bin:$PATH"
+export PATH="~/.rbenv/bin:/usr/local/opt/ruby/bin:/usr/local/heroku/bin:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 eval "$(rbenv init -)"
+export PATH=$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/Library/Haskell/bin

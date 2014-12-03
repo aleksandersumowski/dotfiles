@@ -22,13 +22,16 @@ set autoread                                                 " reload files when
 set smartcase                                                " case-sensitive search if any caps
 set statusline=%{fugitive#statusline()}%F
 set tabstop=8
-set textwidth=79
+let g:C_Ctrl_j = 'off'
+let g:BASH_Ctrl_j = 'off'
+let g:paredit_electric_return = 0
 
 "vim command completion
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
 "testing
 set showcmd
 
@@ -43,6 +46,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+map <C-o> :CtrlPBuffer<CR>
+map <C-i> :CtrlPMRU<CR>
 
 set undodir=~/.vim/undodir//
 set backupdir=~/.vim/backup//
