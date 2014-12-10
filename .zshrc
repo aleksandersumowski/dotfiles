@@ -1,23 +1,20 @@
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
+export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups
+ZSH_THEME="robbyrussell"
 plugins=(git)
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+eval "$(rbenv init -)"
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 #we don't need terminals without tmux
 case $- in *i*)
       if [ -z "$TMUX" ]; then exec tmux; fi
 esac
 
-source ~/.aliases
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/usr/local/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="/Users/aleksander.sumowski/bin:/usr/local/opt/ruby/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/aleksander.sumowski/.rvm/bin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-bindkey -v
-
-bindkey "^R" history-incremental-search-backward
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-export PATH="~/.rbenv/bin:/usr/local/opt/ruby/bin:/usr/local/heroku/bin:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH=$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/Library/Haskell/bin
+export EDITOR='mvim'
+source ~/.aliases
