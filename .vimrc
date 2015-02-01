@@ -42,10 +42,10 @@ if exists('$TMUX')  " Support resizing in tmux
 endif
 
 " keyboard shortcuts
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" map <C-h> <C-w>h
+" map <C-j> <C-w>j
+" map <C-k> <C-w>k
+" map <C-l> <C-w>l
 map <C-o> :CtrlPBuffer<CR>
 map <C-i> :CtrlPMRU<CR>
 
@@ -66,27 +66,18 @@ nmap <leader>r :Require<CR>
 nmap <leader>e :Eval<CR>
 
 
-
 let g:ackprg = 'ag --nogroup --column'
-let g:gitgutter_enabled = 0
 let g:paredit_smartjump = 1
 autocmd VimResized * :wincmd =
 
 set rtp+=~/.vim/bundle/Vundle.vim/
-set rtp+=~/tools/typescript-tools/
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'moll/vim-node'
 Plugin 'L9'
 Plugin 'paredit.vim'
-Plugin 'nanki/treetop.vim'
-Plugin 'jgdavey/tslime.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'fholgado/minibufexpl.vim.git'
 Plugin 'guns/vim-clojure-static'
 Plugin 'jisaacks/GitGutter'
@@ -108,4 +99,3 @@ call vundle#end()
 filetype plugin indent on
 set background=dark
 colorscheme solarized
-au BufRead,BufNewFile *.ts        setlocal filetype=typescript

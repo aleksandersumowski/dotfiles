@@ -2,19 +2,18 @@ export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups
 ZSH_THEME="robbyrussell"
 plugins=(git)
-bindkey -v
-bindkey "^R" history-incremental-search-backward
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 #we don't need terminals without tmux
 case $- in *i*)
       if [ -z "$TMUX" ]; then exec tmux; fi
 esac
 
-export PATH="/Users/aleksander.sumowski/bin:/usr/local/opt/ruby/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/aleksander.sumowski/.rvm/bin:$PATH"
 
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 source $ZSH/oh-my-zsh.sh
-export EDITOR='vim'
-
 source ~/.aliases
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export EDITOR="vim"
+bindkey -v
+export KEYTIMEOUT=1
+bindkey "^R" history-incremental-search-backward
