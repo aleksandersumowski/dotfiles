@@ -49,7 +49,7 @@ endif
 map <C-o> :CtrlPBuffer<CR>
 map <C-i> :CtrlPMRU<CR>
 
-set undodir=~/.vim/undodir//
+set undodir=~/.vim/undo//
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swapfiles//
 set undofile
@@ -74,6 +74,8 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'rodjek/vim-puppet'
 Plugin 'L9'
 Plugin 'paredit.vim'
 Plugin 'Lokaltog/vim-easymotion'

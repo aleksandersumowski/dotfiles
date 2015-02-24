@@ -17,3 +17,4 @@ export EDITOR="vim"
 bindkey -v
 export KEYTIMEOUT=1
 bindkey "^R" history-incremental-search-backward
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
