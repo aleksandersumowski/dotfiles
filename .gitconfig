@@ -4,13 +4,14 @@
 
 
 [alias]
-	co = checkout
-	br = branch
-	st = status
-	df = diff
-        praise = blame
-    up = log origin/master..master
-    reb = pull --rebase
+   co = checkout
+   br = branch
+   st = status
+   df = diff
+   praise = blame
+   up = log origin/master..master
+   reb = pull --rebase
+   l = log --pretty=format:'%Cred[%h]%Creset %Cgreen(%cr) %C(cyan)%an: %Creset %s %C(yellow)%d%Creset' --abbrev-commit --date=relative
 
 [apply]
         whitespace = strip

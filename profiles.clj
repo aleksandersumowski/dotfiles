@@ -2,7 +2,7 @@
          :repl-options {:caught clj-stacktrace.repl/pst+}
          :dependencies [[org.clojure/tools.namespace "0.2.4"]
                         [redl "0.2.4"]
-                        [spyscope "0.1.4"]
+                        [spyscope "0.1.5"]
                         [leiningen #=(leiningen.core.main/leiningen-version)]
                         [im.chit/vinyasa "0.3.3"]]
          :injections [(require '[redl core complete])
