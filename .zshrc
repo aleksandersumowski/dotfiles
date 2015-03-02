@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups
 ZSH_THEME="robbyrussell"
-plugins=(git vim-mode autojump aws brew capistrano github last-working-dir vundle per-directory-history)
+plugins=(git vim-mode autojump aws brew capistrano last-working-dir vundle per-directory-history)
 
 #we don't need terminals without tmux
 case $- in *i*)
