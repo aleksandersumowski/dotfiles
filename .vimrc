@@ -64,7 +64,12 @@ nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>r :Require<CR>
 nmap <leader>e :Eval<CR>
-
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
 let g:ackprg = 'ag --nogroup --column'
 let g:paredit_smartjump = 1
@@ -99,7 +104,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/Align'
+Plugin 'godlygeek/tabular'
 Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
 
