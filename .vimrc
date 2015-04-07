@@ -58,6 +58,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 let mapleader = ','
 nnoremap S diw"0P
+nnoremap <leader>R :%s/\s\+$//<cr>:let @/=''<CR>
 nmap <leader>a :Ag 
 nmap <leader>g :GundoToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
