@@ -6,6 +6,8 @@
                         [redl "0.2.4"]
                         [alembic "0.3.2"]
                         [spyscope "0.1.5"]
+                        [debug-repl "0.3.2"]
+                        [debugger "0.1.7"]
                         [leiningen #=(leiningen.core.main/leiningen-version)]
                         [im.chit/vinyasa "0.3.4"]]
          :injections [(require '[vinyasa.inject :as inject])
@@ -19,6 +21,7 @@
                         clojure.core
                         [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
                         [clojure.tools.trace :all]
+                        [alex-and-georges debug-repl]
                         [clojure.repl doc source]
 
                         ;; inject into clojure.core with prefix

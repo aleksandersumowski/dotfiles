@@ -25,6 +25,7 @@ set tabstop=8
 let g:C_Ctrl_j = 'off'
 let g:BASH_Ctrl_j = 'off'
 let g:paredit_electric_return = 0
+let g:paredit_smartjump = 1
 
 "vim command completion
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
