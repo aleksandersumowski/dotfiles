@@ -38,9 +38,6 @@ set showcmd
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
 
 " keyboard shortcuts
 " map <C-h> <C-w>h
@@ -82,6 +79,7 @@ call vundle#begin()
 
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'elzr/vim-json'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'rodjek/vim-puppet'
 Plugin 'L9'
@@ -113,3 +111,6 @@ call vundle#end()
 filetype plugin indent on
 set background=dark
 colorscheme solarized
+
+
+autocmd BufNewFile,BufRead *.cljx set ft=clojure

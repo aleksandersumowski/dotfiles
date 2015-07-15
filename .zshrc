@@ -5,7 +5,7 @@ plugins=(git vim-mode autojump aws brew capistrano last-working-dir vundle)
 
 #we don't need terminals without tmux
 case $- in *i*)
-      if [ -z "$TMUX" ]; then exec tmux; fi
+      if [ -z "$TMUX" ]; then exec tmux -2; fi
 esac
 
 
@@ -17,4 +17,5 @@ export EDITOR="vim"
 bindkey -v
 export KEYTIMEOUT=1
 bindkey "^R" history-incremental-search-backward
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
