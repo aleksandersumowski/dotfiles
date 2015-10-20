@@ -7,7 +7,6 @@ set autoindent
 set expandtab
 set hlsearch
 set clipboard=unnamed                                        " yank and paste with the system clipboard
-set encoding=utf-8
 set ignorecase                                               " case-insensitive search
 set list                                                     " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
@@ -32,6 +31,13 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 
 "testing
 set showcmd
@@ -79,6 +85,8 @@ call vundle#begin()
 
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'tmux-plugins/vim-tmux'
 Plugin 'elzr/vim-json'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'rodjek/vim-puppet'
@@ -95,7 +103,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fireplace'
@@ -106,6 +114,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'godlygeek/tabular'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 filetype plugin indent on
@@ -114,3 +123,6 @@ colorscheme solarized
 
 
 autocmd BufNewFile,BufRead *.cljx set ft=clojure
+autocmd BufNewFile,BufRead *.boot set ft=clojure
+autocmd BufNewFile,BufRead *.elm set ft=elm
+autocmd BufNewFile,BufRead riemann.config set ft=clojure
