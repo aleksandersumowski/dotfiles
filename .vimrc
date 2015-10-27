@@ -6,7 +6,7 @@ syntax enable
 set autoindent
 set expandtab
 set hlsearch
-set clipboard=unnamed                                        " yank and paste with the system clipboard
+set clipboard+=unnamedplus                                        " yank and paste with the system clipboard
 set ignorecase                                               " case-insensitive search
 set list                                                     " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫

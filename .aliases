@@ -16,4 +16,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias fin="growlnotify -m finished -t  finished"
 alias f="fab -f /Users/aleksander.sumowski/projects/puppet/fabfile.py"
 
-alias vim=`which nvim`
+alias vim=`which nvim` -u ~/.vimrc
