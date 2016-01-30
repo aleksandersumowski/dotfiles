@@ -23,3 +23,7 @@ source ~/.aws_credentials
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/sbin:$PATH"
+source /usr/local/share/zsh/site-functions/_aws
+export ALERTA_CONF_FILE=~/.alerta.conf
+export ALERTA_DEFAULT_PROFILE=production
+export COMMS_WEB_HOME=/Users/aleksander.sumowski/projects/comms-web
