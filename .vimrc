@@ -79,21 +79,16 @@ let g:paredit_smartjump = 1
 autocmd VimResized * :wincmd =
 
 call plug#begin()
-Plug 'gmarik/Vundle.vim'
-Plug 'lambdatoast/elm.vim'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'elzr/vim-json'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'rodjek/vim-puppet'
 Plug 'L9'
-Plug 'paredit.vim'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'fholgado/minibufexpl.vim'
 Plug 'guns/vim-clojure-static'
+Plug 'paredit.vim'
+Plug 'fholgado/minibufexpl.vim'
 Plug 'jisaacks/GitGutter'
 Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
+Plug 'numkil/ag.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-classpath'
@@ -107,9 +102,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
-Plug 'godlygeek/tabular'
+Plug 'tpope/vim-obsession'
 Plug 'altercation/vim-colors-solarized'
-Plug 'fatih/vim-go'
 call plug#end()
 
 set background=dark
