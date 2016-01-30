@@ -1,6 +1,4 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
-
 syntax enable
 
 set autoindent
@@ -80,49 +78,46 @@ let g:ackprg = 'ag --nogroup --column'
 let g:paredit_smartjump = 1
 autocmd VimResized * :wincmd =
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+call plug#begin()
+Plug 'gmarik/Vundle.vim'
+Plug 'lambdatoast/elm.vim'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'elzr/vim-json'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'rodjek/vim-puppet'
+Plug 'L9'
+Plug 'paredit.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'guns/vim-clojure-static'
+Plug 'jisaacks/GitGutter'
+Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-salve'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'godlygeek/tabular'
+Plug 'altercation/vim-colors-solarized'
+Plug 'fatih/vim-go'
+call plug#end()
 
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'lambdatoast/elm.vim'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'elzr/vim-json'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'rodjek/vim-puppet'
-Plugin 'L9'
-Plugin 'paredit.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'fholgado/minibufexpl.vim.git'
-Plugin 'guns/vim-clojure-static'
-Plugin 'jisaacks/GitGutter'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-salve'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'godlygeek/tabular'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'fatih/vim-go'
-call vundle#end()
-
-filetype plugin indent on
 set background=dark
 colorscheme solarized
 
 
 autocmd BufNewFile,BufRead *.cljx set ft=clojure
+autocmd BufNewFile,BufRead *.cljc set ft=clojure
 autocmd BufNewFile,BufRead *.boot set ft=clojure
 autocmd BufNewFile,BufRead *.elm set ft=elm
 autocmd BufNewFile,BufRead riemann.config set ft=clojure
