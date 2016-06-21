@@ -2,6 +2,9 @@
         name = Aleksander Sumowski
         email = 
 
+[diff]
+  compactionHeuristic = true
+
 
 [alias]
    co = checkout
@@ -25,3 +28,5 @@
 	editor = vim
 [push]
 	default = simple
+[pull]
+	ff = only

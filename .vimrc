@@ -1,5 +1,4 @@
 set nocompatible               " be iMproved
-syntax enable
 
 set autoindent
 set expandtab
@@ -80,29 +79,33 @@ autocmd VimResized * :wincmd =
 
 call plug#begin()
 Plug 'L9'
+Plug 'derekwyatt/vim-scala'
+Plug 'elixir-lang/vim-elixir'
+Plug 'sjl/gundo.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'guns/vim-clojure-static'
 Plug 'paredit.vim'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'jisaacks/GitGutter'
 Plug 'kien/ctrlp.vim'
 Plug 'numkil/ag.nvim'
-Plug 'scrooloose/nerdtree'
-Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rsi'
 Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
