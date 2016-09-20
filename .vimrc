@@ -22,6 +22,7 @@ let g:C_Ctrl_j = 'off'
 let g:BASH_Ctrl_j = 'off'
 let g:paredit_electric_return = 0
 let g:paredit_smartjump = 1
+let g:vim_json_syntax_conceal = 0
 
 "vim command completion
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
@@ -79,6 +80,7 @@ autocmd VimResized * :wincmd =
 
 call plug#begin()
 Plug 'L9'
+Plug 'elzr/vim-json'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
 Plug 'sjl/gundo.vim'
