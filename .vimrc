@@ -10,6 +10,7 @@ set listchars=tab:▸\ ,trail:▫
 set ruler                                                    " show where you are
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set incsearch
+set inccommand=split
 set laststatus=2  "always display status line
 set number                    " line numbers
 set scrolloff=5

@@ -19,6 +19,11 @@ export KEYTIMEOUT=1
 export GOPATH=/Users/aleksander.sumowski/projects/gopath/
 bindkey "^R" history-incremental-search-backward
 source ~/.aws_credentials
-export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin:$GOPATH/bin/"
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin:$GOPATH/bin/:$HOME/tools/google-cloud-sdk/bin/"
 
 export COMMS_WEB_HOME=/Users/aleksander.sumowski/projects/comms-web
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/aleksander.sumowski/tools/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/aleksander.sumowski/tools/google-cloud-sdk/completion.zsh.inc'
+fi
