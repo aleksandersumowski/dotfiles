@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups
 ZSH_THEME="robbyrussell"
-plugins=(git vim-mode autojump aws brew capistrano last-working-dir vundle fabric)
+plugins=(git vim-mode autojump aws brew capistrano last-working-dir)
 
 #we don't need terminals without tmux
 case $- in *i*)
@@ -16,13 +16,9 @@ export EDITOR="vim"
 export BROWSER="firefox"
 bindkey -v
 export KEYTIMEOUT=1
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages/:/Library/Python/2.7/site-packages:$PYTHONPATH
-export GOPATH=/Users/aleksander.sumowski/libs/:/Users/aleksander.sumowski/projects/
+export GOPATH=/Users/aleksander.sumowski/projects/gopath/
 bindkey "^R" history-incremental-search-backward
 source ~/.aws_credentials
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin:$GOPATH/bin/"
 
-export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin"
-source /usr/local/share/zsh/site-functions/_aws
-export ALERTA_CONF_FILE=~/.alerta.conf
-export ALERTA_DEFAULT_PROFILE=production
 export COMMS_WEB_HOME=/Users/aleksander.sumowski/projects/comms-web
