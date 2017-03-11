@@ -23,6 +23,7 @@ let g:C_Ctrl_j = 'off'
 let g:BASH_Ctrl_j = 'off'
 let g:paredit_electric_return = 0
 let g:paredit_smartjump = 1
+let g:deoplete#enable_at_startup = 1
 let g:vim_json_syntax_conceal = 0
 
 "vim command completion
@@ -77,10 +78,14 @@ endif
 
 let g:ackprg = 'ag --nogroup --column'
 let g:paredit_smartjump = 1
+let g:python_host_skip_check = 1
 autocmd VimResized * :wincmd =
 
 call plug#begin()
 Plug 'L9'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'elzr/vim-json'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
@@ -94,7 +99,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'paredit.vim'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'jisaacks/GitGutter'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'numkil/ag.nvim'
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-eunuch'
@@ -110,6 +115,9 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rsi'
 Plug 'altercation/vim-colors-solarized'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 set background=dark
