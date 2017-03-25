@@ -1,4 +1,16 @@
 set nocompatible               " be iMproved
+" for langserv
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/opt/rls/Cargo.toml'],
+    \ 'javascript': ['/usr/local/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'javascript.jsx': ['/usr/local/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 set autoindent
 set expandtab
@@ -42,8 +54,8 @@ set mouse=a
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 " map <C-l> <C-w>l
-map <C-o> :CtrlPBuffer<CR>
-map <C-i> :CtrlPMRU<CR>
+map <C-o> :Files<CR>
+map <C-i> :Buffers<CR>
 
 set undodir=~/.vim/undo//
 set backupdir=~/.vim/backup//
@@ -75,6 +87,8 @@ autocmd VimResized * :wincmd =
 
 call plug#begin()
 Plug 'L9'
+Plug 'scrooloose/nerdtree'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
