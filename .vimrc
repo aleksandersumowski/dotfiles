@@ -30,14 +30,6 @@ let g:vim_json_syntax_conceal = 0
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
 
 "testing
 set showcmd
@@ -84,13 +76,14 @@ autocmd VimResized * :wincmd =
 call plug#begin()
 Plug 'L9'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'elzr/vim-json'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
 Plug 'sjl/gundo.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
 Plug 'tmux-plugins/vim-tmux'
@@ -99,8 +92,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'paredit.vim'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'jisaacks/GitGutter'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'numkil/ag.nvim'
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-salve'
