@@ -3,7 +3,7 @@
         email = 
 
 [diff]
-  compactionHeuristic = true
+  indentHeuristic = true
 
 
 [alias]

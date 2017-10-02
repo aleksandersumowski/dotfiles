@@ -2,16 +2,6 @@ set nocompatible               " be iMproved
 " for langserv
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/opt/rls/Cargo.toml'],
-    \ 'javascript': ['/usr/local/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'javascript.jsx': ['/usr/local/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ }
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
 set autoindent
 set expandtab
 set hlsearch
@@ -37,11 +27,23 @@ let g:paredit_electric_return = 0
 let g:paredit_smartjump = 1
 let g:deoplete#enable_at_startup = 1
 let g:vim_json_syntax_conceal = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = '/usr/local/bin/eslint_d'
 
 "vim command completion
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
+
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.reason = '[^. *\t]\.\w*\|\h\w*|#'
+let g:deoplete#sources = {}
+let g:deoplete#sources.reason = ['omni', 'buffer']
+let g:syntastic_reason_checkers=['merlin']
 
 "testing
 set showcmd
@@ -54,8 +56,9 @@ set mouse=a
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 " map <C-l> <C-w>l
-map <C-o> :Files<CR>
-map <C-i> :Buffers<CR>
+map <C-i> :GFiles<CR>
+map <C-o> :Buffers<CR>
+map <C-p> :FZFMru<CR>
 
 set undodir=~/.vim/undo//
 set backupdir=~/.vim/backup//
@@ -80,47 +83,53 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
-let g:ackprg = 'ag --nogroup --column'
+let g:ackprg = 'ag --nogroup --column --ignore ~/.ignore'
 let g:paredit_smartjump = 1
 let g:python_host_skip_check = 1
 autocmd VimResized * :wincmd =
 
 call plug#begin()
-Plug 'L9'
-Plug 'scrooloose/nerdtree'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'elzr/vim-json'
+Plug 'chr4/nginx.vim'
+Plug 'chrisbra/csv.vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
-Plug 'sjl/gundo.vim'
+Plug 'elzr/vim-json'
 Plug 'guns/vim-clojure-static'
-Plug 'tpope/vim-fireplace'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'paredit.vim'
-Plug 'fholgado/minibufexpl.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'hashivim/vim-terraform'
 Plug 'jisaacks/GitGutter'
-Plug 'tpope/vim-classpath'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-salve'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rsi'
-Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'pbogut/fzf-mru.vim'
+Plug 'reasonml/vim-reason-loader'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/gundo.vim'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-salve'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/paredit.vim'
+Plug 'vim-scritps/L9'
 Plug 'vim-syntastic/syntastic'
 call plug#end()
 
@@ -133,3 +142,4 @@ autocmd BufNewFile,BufRead *.cljc set ft=clojure
 autocmd BufNewFile,BufRead *.boot set ft=clojure
 autocmd BufNewFile,BufRead *.elm set ft=elm
 autocmd BufNewFile,BufRead riemann.config set ft=clojure
+autocmd BufNewFile,BufRead *.conf set ft=nginx
