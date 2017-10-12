@@ -12,3 +12,5 @@ alias l='ls -CF'
 alias vim=`which nvim` -u ~/.vimrc
 
 alias f="fab -f ~/projects/puppet/fabfile.py"
+
+alias lein="rlwrap lein"
