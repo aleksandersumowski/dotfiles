@@ -1,6 +1,6 @@
 [user]
         name = Aleksander Sumowski
-        email = 
+	email = aleksander.sumowski@uswitch.com
 
 [diff]
   indentHeuristic = true

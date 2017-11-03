@@ -70,12 +70,13 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 let mapleader = ','
 nnoremap S diw"0P
 nnoremap <leader>R :%s/\s\+$//<cr>:let @/=''<CR>
-nmap <leader>a :Ag 
+nmap <leader>a :Ack 
 nmap <leader>g :GundoToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>r :Require<CR>
 nmap <leader>e :Eval<CR>
+nmap \r :!tmux send-keys -t 0:0.1 C-p C-j <CR><CR>
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
   vmap <Leader>a= :Tabularize /=<CR>
@@ -83,12 +84,20 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
-let g:ackprg = 'ag --nogroup --column --ignore ~/.ignore'
+let g:ackprg = 'rg --vimgrep --no-heading'
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 let g:paredit_smartjump = 1
 let g:python_host_skip_check = 1
+map @@x !%xmllint --format -
 autocmd VimResized * :wincmd =
 
 call plug#begin()
+Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }

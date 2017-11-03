@@ -18,7 +18,7 @@ bindkey -v
 export KEYTIMEOUT=1
 export GOPATH=/Users/aleksander.sumowski/projects/gopath/
 source ~/.aws_credentials
-export PATH="/Users/aleksander.sumowski/.rvm/gems/ruby-2.3.1/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin:$GOPATH/bin/:$HOME/tools/google-cloud-sdk/bin/"
+export PATH="/Users/aleksander.sumowski/.rvm/gems/ruby-2.3.1/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin:$GOPATH/bin/:$HOME/tools/google-cloud-sdk/bin/:/Users/aleksander.sumowski/.fzf/bin"
 
 
 source /Users/aleksander.sumowski/.rvm/scripts/rvm
