@@ -30,3 +30,4 @@
 	default = simple
 [pull]
 	ff = only
+	rebase = true

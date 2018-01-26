@@ -2,6 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups
 ZSH_THEME="robbyrussell"
 plugins=(git vi-mode aws brew last-working-dir kubectl)
+# fasd, github, httpie, postgres, rails, rake, rand-quote, stack, sudo, systemd, terraform, tmux, tmuxinator, tmux-cssh, vim-interaction 
 
 #we don't need terminals without tmux
 case $- in *i*)
@@ -18,7 +19,6 @@ bindkey -v
 export KEYTIMEOUT=1
 export GOPATH=/Users/aleksander.sumowski/projects/gopath/
 source ~/.aws_credentials
-export PATH="/Users/aleksander.sumowski/.rvm/gems/ruby-2.3.1/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH:$HOME/.rvm/bin:$HOME/libs/bin:/usr/local/sbin:$GOPATH/bin/:$HOME/tools/google-cloud-sdk/bin/:/Users/aleksander.sumowski/.fzf/bin"
 
 
 source /Users/aleksander.sumowski/.rvm/scripts/rvm
@@ -31,7 +31,6 @@ fi
 
 eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -45,13 +44,11 @@ if [[ -f /usr/local/share/chtf/chtf.sh ]]; then
     source "/usr/local/share/chtf/chtf.sh"
 fi
 
-chtf 0.10.7
+chtf 0.11.1
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-ki() {
-  kubectl $@ --namespace=insurance
-}
 
+export PATH=/Users/aleksander.sumowski/.local/bin/luna-studio:$PATH

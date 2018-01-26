@@ -9,8 +9,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias vim=`which nvim` -u ~/.vimrc
+alias vim=`which nvim`
 
 alias f="fab -f ~/projects/puppet/fabfile.py"
 
 alias lein="rlwrap lein"
+
+alias ki="kubectl --namespace=insurance"
