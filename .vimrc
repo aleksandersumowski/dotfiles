@@ -33,6 +33,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = '/usr/local/bin/eslint_d'
+let g:python_host_prog = '/Users/asumowski/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/asumowski/.pyenv/versions/neovim3/bin/python'
+
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
 "vim command completion
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
@@ -98,6 +103,7 @@ autocmd VimResized * :wincmd =
 
 call plug#begin()
 Plug 'mileszs/ack.vim'
+Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }

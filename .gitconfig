@@ -1,6 +1,6 @@
 [user]
         name = Aleksander Sumowski
-	email = aleksander.sumowski@uswitch.com
+	email = aleksander.sumowski@youview.com
 
 [diff]
   indentHeuristic = true
@@ -31,3 +31,5 @@
 [pull]
 	ff = only
 	rebase = true
+[hub]
+	host = github.cldsvcs.com
