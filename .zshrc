@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups
 ZSH_THEME="robbyrussell"
-plugins=(git vi-mode aws brew last-working-dir kubectl)
+plugins=(git vi-mode aws brew last-working-dir kubectl terraform)
 # fasd, github, httpie, postgres, rails, rake, rand-quote, stack, sudo, systemd, terraform, tmux, tmuxinator, tmux-cssh, vim-interaction 
 
 #we don't need terminals without tmux
@@ -14,7 +14,7 @@ esac
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 source ~/.paths
-export EDITOR="vim"
+export EDITOR=`which nvim`
 export BROWSER="firefox"
 bindkey -v
 export KEYTIMEOUT=1
@@ -26,3 +26,8 @@ if [ -f ~/.youviewrc ]
 then
   source ~/.youviewrc
 fi
+
+export PATH=/Users/asumowski/.local/bin:$PATH
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

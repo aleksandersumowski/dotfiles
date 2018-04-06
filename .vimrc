@@ -103,6 +103,7 @@ autocmd VimResized * :wincmd =
 
 call plug#begin()
 Plug 'mileszs/ack.vim'
+Plug 'roxma/vim-tmux-clipboard'
 Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'altercation/vim-colors-solarized'
