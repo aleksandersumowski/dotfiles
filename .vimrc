@@ -20,7 +20,7 @@ set softtabstop=2
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set smartcase                                                " case-sensitive search if any caps
 set statusline=%{fugitive#statusline()}%F
-set tabstop=8
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 let g:C_Ctrl_j = 'off'
 let g:BASH_Ctrl_j = 'off'
 let g:paredit_electric_return = 0
@@ -33,10 +33,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = '/usr/local/bin/eslint_d'
-let g:python_host_prog = '/Users/asumowski/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/asumowski/.pyenv/versions/neovim3/bin/python'
-
-let g:terraform_fmt_on_save=1
+let g:python_host_prog='/Users/aleksanders/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog='/Users/aleksanders/.pyenv/versions/neovim3/bin/python'
+let g:github_enterprise_urls = ['github.thetrainline.com']
 let g:terraform_align=1
 
 "vim command completion
@@ -101,11 +100,28 @@ let g:python_host_skip_check = 1
 map @@x !%xmllint --format -
 autocmd VimResized * :wincmd =
 
+
+
+function! s:FzfCommandHistory()
+  let s:INTERRUPT = "\u03\u0c" " <C-c><C-l>
+  let s:SUBMIT = "\u0d" " <C-m>
+  let s:cmdtype = getcmdtype()
+  let s:args = string({
+  \   "options": "--query=" . shellescape(getcmdline()),
+  \ })
+  if s:cmdtype == ':'
+    return s:INTERRUPT . ":keepp call fzf#vim#command_history(" .  s:args . ")" . s:SUBMIT
+  elseif s:cmdtype == '/'
+    return s:INTERRUPT . ":keepp call fzf#vim#search_history(" .  s:args . ")" . s:SUBMIT
+  else
+    return ''
+  endif
+endfunction
+cnoremap <expr> <C-g> <SID>FzfCommandHistory()
+
 call plug#begin()
-Plug 'mileszs/ack.vim'
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cakebaker/scss-syntax.vim'
@@ -116,22 +132,20 @@ Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'guns/vim-clojure-static'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'hashivim/vim-terraform'
-Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
+Plug 'machakann/vim-highlightedyank'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'mileszs/ack.vim'
 Plug 'pbogut/fzf-mru.vim'
-Plug 'reasonml/vim-reason-loader'
+Plug 'roxma/vim-tmux-clipboard'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'tpope/vim-classpath'
-Plug 'tpope/vim-salve'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
@@ -139,9 +153,10 @@ Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-salve'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -153,6 +168,9 @@ call plug#end()
 set background=dark
 colorscheme solarized
 
+function! FormatJSON()
+:%!python -m json.tool
+endfunction
 
 autocmd BufNewFile,BufRead *.cljx set ft=clojure
 autocmd BufNewFile,BufRead *.cljc set ft=clojure
