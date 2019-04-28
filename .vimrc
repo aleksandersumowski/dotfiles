@@ -33,9 +33,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = '/usr/local/bin/eslint_d'
-let g:python_host_prog='/Users/aleksanders/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog='/Users/aleksanders/.pyenv/versions/neovim3/bin/python'
-let g:github_enterprise_urls = ['github.thetrainline.com']
+let g:python_host_prog='/Users/alexsandersumowski/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog='/Users/alexsandersumowski/.pyenv/versions/neovim3/bin/python'
 let g:terraform_align=1
 
 "vim command completion
@@ -47,6 +46,8 @@ let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.reason = '[^. *\t]\.\w*\|\h\w*|#'
 let g:deoplete#sources = {}
 let g:deoplete#sources.reason = ['omni', 'buffer']
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 let g:syntastic_reason_checkers=['merlin']
 
 "testing
@@ -121,35 +122,28 @@ cnoremap <expr> <C-g> <SID>FzfCommandHistory()
 
 call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'chr4/nginx.vim'
-Plug 'chrisbra/csv.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'derekwyatt/vim-scala'
-Plug 'elixir-lang/vim-elixir'
-Plug 'elzr/vim-json'
+
+Plug 'clojure-vim/async-clj-highlight'
+Plug 'clojure-vim/async-clj-omni'
 Plug 'guns/vim-clojure-static'
-Plug 'hashivim/vim-terraform'
+Plug 'tpope/vim-fireplace'
+Plug 'vim-scripts/paredit.vim'
+Plug 'tpope/vim-classpath'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'machakann/vim-highlightedyank'
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'mileszs/ack.vim'
 Plug 'pbogut/fzf-mru.vim'
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'scrooloose/nerdtree'
-Plug 'sjl/gundo.vim'
+
+
 Plug 'tmux-plugins/vim-tmux'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tpope/tpope-vim-abolish'
-Plug 'tpope/vim-classpath'
+Plug 'roxma/vim-tmux-clipboard'
+
+Plug 'tpope/vim-abolish' " coercion camel/snake/etc
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-projectionist'
@@ -157,16 +151,25 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-salve'
-Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-scripts/paredit.vim'
-Plug 'vim-scritps/L9'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'machakann/vim-highlightedyank'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/gundo.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'morhetz/gruvbox'
+
+" specific languages/data formats
+Plug 'chrisbra/csv.vim'
+Plug 'elzr/vim-json'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 
 function! FormatJSON()
 :%!python -m json.tool
