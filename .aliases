@@ -24,5 +24,4 @@ alias top="sudo htop"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias ping='prettyping --nolegend'
-alias cat='bat'
 alias more='bat'

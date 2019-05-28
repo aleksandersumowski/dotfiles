@@ -28,6 +28,7 @@
         color = auto
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
 [pull]

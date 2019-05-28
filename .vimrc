@@ -65,18 +65,18 @@ map <C-i> :GFiles<CR>
 map <C-o> :Buffers<CR>
 map <C-p> :FZFMru<CR>
 
-set undodir=~/.vim/undo//
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swapfiles//
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+set undodir=~/.vim/undo//
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swapfiles//
 
 let mapleader = ','
 nnoremap S diw"0P
 nnoremap <leader>R :%s/\s\+$//<cr>:let @/=''<CR>
-nmap <leader>a :Ack 
-nmap <leader>g :GundoToggle<CR>
+nmap <leader>a :Grepper -tool rg -noprompt -query
+nmap <leader>g :MundoToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>r :Require<CR>
@@ -119,16 +119,20 @@ function! s:FzfCommandHistory()
   endif
 endfunction
 cnoremap <expr> <C-g> <SID>FzfCommandHistory()
+let strip_whitespace_on_save = 1
 
 call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'w0rp/ale'
 Plug 'clojure-vim/async-clj-highlight'
 Plug 'clojure-vim/async-clj-omni'
+Plug 'clojure-vim/clj-refactor.nvim'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-classpath'
+Plug 'Vigemus/impromptu.nvim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -156,9 +160,9 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'scrooloose/nerdtree'
-Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
 Plug 'vim-syntastic/syntastic'
 Plug 'morhetz/gruvbox'
 
@@ -174,6 +178,8 @@ colorscheme gruvbox
 function! FormatJSON()
 :%!python -m json.tool
 endfunction
+
+let g:grepper = { 'tools': ['rg', 'git'], }
 
 autocmd BufNewFile,BufRead *.cljx set ft=clojure
 autocmd BufNewFile,BufRead *.cljc set ft=clojure

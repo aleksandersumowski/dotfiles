@@ -7,3 +7,4 @@ pyenv install 2.7.16
 pyenv install 3.7.3
 pyenv virtualenv 2.7.16 neovim2
 pyenv virtualenv 3.7.3 neovim3
+# shims / pip install pynvim
