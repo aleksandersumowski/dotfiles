@@ -27,7 +27,6 @@ source ~/.fzf.zsh
 
 
 
-export HOMEBREW_GITHUB_API_TOKEN=1144893beaa0aecf09e4b26986c0597f2f22a508
 export EDITOR=`which nvim`
 export BROWSER="firefox"
 bindkey -v
@@ -40,3 +39,5 @@ eval "$(pyenv virtualenv-init -)"
 autoload -Uz zmv
 
 export AWS_REGION=eu-west-1
+
+source ~/.paths

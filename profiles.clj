@@ -12,7 +12,7 @@
         :injections [(require '[cognitect.rebl :as rebl]
                               '[clojure.java.jdbc.datafy :as jdbc-datafy])]
         :dependencies [[org.clojure/core.async "0.4.490"]
-                       [com.cognitect/rebl "0.9.157"]
+                       [com.cognitect/rebl "0.9.172"]
                        [rickmoynihan/nrebl.middleware "0.2.0"]
                        [org.openjfx/javafx-fxml     "11.0.2"]
                        [org.clojure/java.jdbc "0.7.9"]

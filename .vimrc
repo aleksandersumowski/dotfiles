@@ -123,6 +123,7 @@ let strip_whitespace_on_save = 1
 
 call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'w0rp/ale'
 Plug 'clojure-vim/async-clj-highlight'
@@ -133,6 +134,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-classpath'
 Plug 'Vigemus/impromptu.nvim'
+Plug 'Olical/conjure', { 'tag': '*', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

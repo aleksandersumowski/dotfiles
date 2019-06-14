@@ -4,7 +4,7 @@
 
 [diff]
   indentHeuristic = true
-
+  tool = vimdiff
 
 [alias]
    co = checkout
@@ -15,6 +15,7 @@
    up = log origin/master..master
    reb = pull --rebase
    l = log --pretty=format:'%Cred[%h]%Creset %Cgreen(%cr) %C(cyan)%an: %Creset %s %C(yellow)%d%Creset' --abbrev-commit --date=relative
+   d = difftool
 
 [apply]
         whitespace = strip
@@ -34,5 +35,7 @@
 [pull]
 	ff = only
 	rebase = true
-[hub]
-	host = github.cldsvcs.com
+
+[difftool]
+	prompt = false
+        trustExitCode = true
