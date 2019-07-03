@@ -1,6 +1,6 @@
 [user]
         name = Aleksander Sumowski
-	email = aleksander.sumowski@youview.com
+	email = a-aleksander.sumowski@rvu.co.uk
 
 [diff]
   indentHeuristic = true
@@ -38,4 +38,5 @@
 
 [difftool]
 	prompt = false
-        trustExitCode = true
+[difftool "vimdiff"]
+    trustExitCode = true

@@ -1,13 +1,18 @@
 {:system {:jvm-opts ["-Duser.timezone=UTC"]}
- :user  {:plugins  [[lein-ancient "0.6.15" :exclusions [org.clojure/clojure]]
-                    [expound "0.7.2"]
-                    [jonase/eastwood "0.3.3"]
-                    [lein-localrepo "0.5.4"]
-                    [lein-try "0.4.3"]]
-         :repl-options {:init (require 'cljfmt.core)}
-         :dependencies [[cljfmt "0.5.1"]]
+ :user  {:plugins  []
+         :repl-options {}
+         :dependencies [ ]
          :aliases {}
          :injections []}
+ :cider  {:plugins [[cider/cider-nrepl "0.21.1"]
+                    [refactor-nrepl "2.4.0"]]}
+ :extras {:plugins [[expound "0.7.2"]
+                    [jonase/eastwood "0.3.3"]
+                    [lein-localrepo "0.5.4"]
+                    [lein-try "0.4.3"]
+                    [lein-pprint "1.2.0"]
+                    [lein-ancient "0.6.15" :exclusions [org.clojure/clojure]]]}
+ :prepl {:jvm-opts ["-Dclojure.server.repl='{:port,5555,:accept,clojure.core.server/repl}'"]}
  :rebl {:repl-options {:nrepl-middleware [nrebl.middleware/wrap-nrebl]}
         :injections [(require '[cognitect.rebl :as rebl]
                               '[clojure.java.jdbc.datafy :as jdbc-datafy])]
