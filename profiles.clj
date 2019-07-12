@@ -4,7 +4,7 @@
          :dependencies [ ]
          :aliases {}
          :injections []}
- :cider  {:plugins [[cider/cider-nrepl "0.21.1"]
+ :cider  {:plugins [[cider/cider-nrepl "0.22.0-beta4"]
                     [refactor-nrepl "2.4.0"]]}
  :extras {:plugins [[expound "0.7.2"]
                     [jonase/eastwood "0.3.3"]

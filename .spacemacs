@@ -332,9 +332,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
   (add-hook 'clojure-mode-hook #'evil-smartparens-mode)
   (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
-  (add-hook 'clojure-mode-hook #'evil-googles-mode)
+  (add-hook 'clojure-mode-hook #'evil-goggles-mode)
 
   (setq projectile-indexing-method 'hybrid)
   (setq projectile-sort-order 'recently-active)
