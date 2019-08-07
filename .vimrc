@@ -32,9 +32,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = '/usr/local/bin/eslint_d'
-let g:python_host_prog='/Users/alexsandersumowski/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog='/Users/alexsandersumowski/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog=$HOME.'/.pythons/neovim/bin/python3'
 let g:terraform_align=1
 
 "vim command completion
@@ -134,7 +132,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-classpath'
 Plug 'Vigemus/impromptu.nvim'
-Plug 'Olical/conjure', { 'tag': 'v0.21.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
+Plug 'Olical/conjure', { 'tag': 'v0.24.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

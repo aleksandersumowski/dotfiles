@@ -13,7 +13,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 source ~/.aliases
-source ~/.paths
 if [ -f ~/.profile ]
 then
   source ~/.profile
