@@ -120,9 +120,6 @@ cnoremap <expr> <C-g> <SID>FzfCommandHistory()
 let strip_whitespace_on_save = 1
 
 call plug#begin()
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 Plug 'w0rp/ale'
 Plug 'clojure-vim/async-clj-highlight'
 Plug 'clojure-vim/async-clj-omni'
@@ -131,8 +128,9 @@ Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-classpath'
-Plug 'Vigemus/impromptu.nvim'
-Plug 'Olical/conjure', { 'tag': 'v0.24.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
+" Use release branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Olical/conjure', { 'tag': 'v0.25.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -145,7 +143,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 
 Plug 'tpope/vim-abolish' " coercion camel/snake/etc
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -162,6 +159,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'simnalamburt/vim-mundo'
 Plug 'vim-syntastic/syntastic'
 Plug 'morhetz/gruvbox'
