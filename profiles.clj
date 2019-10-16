@@ -12,12 +12,13 @@
                     [lein-try "0.4.3"]
                     [lein-pprint "1.2.0"]
                     [lein-ancient "0.6.15" :exclusions [org.clojure/clojure]]]}
- :prepl {:jvm-opts ["-Dclojure.server.api={:port,5555,:accept,clojure.core.server/api}"]}
+ :prepl {:jvm-opts ["-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/io-prepl}"]}
  :rebl {:repl-options {:nrepl-middleware [nrebl.middleware/wrap-nrebl]}
         :injections [(require '[cognitect.rebl :as rebl]
                               '[clojure.java.jdbc.datafy :as jdbc-datafy])]
         :dependencies [[org.clojure/core.async "0.4.490"]
-                       [com.cognitect/rebl "0.9.172"]
+                       [com.cognitect/rebl "0.9.220"]
+                       [nrepl-rebl "0.1.1"]
                        [rickmoynihan/nrebl.middleware "0.2.0"]
                        [org.openjfx/javafx-fxml     "11.0.2"]
                        [org.clojure/java.jdbc "0.7.9"]

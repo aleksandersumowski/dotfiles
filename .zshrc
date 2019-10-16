@@ -5,12 +5,18 @@ ZSH_THEME="robbyrussell"
 plugins=(git vi-mode aws brew last-working-dir kubectl terraform sbt docker fasd)
 
 #we don't need terminals without tmux
+alias tmux="env TERM=xterm-256color tmux"
 case $- in *i*)
       if [ -z "$TMUX" ]; then exec tmux -2; fi
 esac
 
 # extra config
 source $ZSH/oh-my-zsh.sh
+
+function is_osx() {
+    local platform=$(uname)
+    [ "$platform" == "Darwin" ]
+}
 
 function source_if_exists {
 	test -e $1 &&  source $1 || print  $1 " not found"
@@ -30,13 +36,11 @@ export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 bindkey -v
 export KEYTIMEOUT=1
 
-
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
 autoload -Uz compinit
 compinit
 
 export AWS_REGION=eu-west-1
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

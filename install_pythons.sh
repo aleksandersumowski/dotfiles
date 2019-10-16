@@ -1,10 +1,12 @@
-sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+python3 -m venv $HOME/.pythons/neovim
+source $HOME/.pythons/neovim
+pip install neovim
+npm install -g neovim
+mkdir 
 
-easy_install pip
-pip install --upgrade pip
-brew install pyenv pyenv-virtualenv
-pyenv install 2.7.16
-pyenv install 3.7.3
-pyenv virtualenv 2.7.16 neovim2
-pyenv virtualenv 3.7.3 neovim3
-# shims / pip install pynvim
+
+curl -s "https://get.sdkman.io" | bash
+mkdir -p ~/.vim/undo
+mkdir -p ~/.vim/backup
+mkdir -p ~/.vim/swapfiles
+
