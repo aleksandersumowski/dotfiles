@@ -1,28 +1,18 @@
 #let there be colour
 alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias fd='fdfind'
 alias gup='git pull --rebase --autostash'
 alias gupm='git pull --rebase --autostash origin master && git rebase --autostash master'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 alias vim=`which nvim`
-
-alias f="fab -f ~/projects/puppet/fabfile.py"
 
 alias lein="rlwrap lein"
 
 alias ki="kubectl --namespace=insurance"
 alias pp='python -mjson.tool'
-alias help='tldr'
-alias man='tldr'
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias top="sudo htop"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias ping='prettyping --nolegend'
 alias more='bat'

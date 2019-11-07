@@ -19,16 +19,15 @@ function is_osx() {
 }
 
 function source_if_exists {
-	test -e $1 &&  source $1 || print  $1 " not found"
+    test -e $1 &&  source $1 || print  $1 " not found"
 }
 
 source_if_exists "${HOME}/.aliases"
 source_if_exists "${HOME}/.paths"
 source_if_exists "${HOME}/.profile"
-source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
 source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 source_if_exists "${HOME}/.fzf.zsh"
-
+[[ $(uname) == "Darwin" ]] && source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
 
 export EDITOR=`which nvim`
 export BROWSER="firefox"
@@ -41,6 +40,5 @@ autoload -Uz compinit
 compinit
 
 export AWS_REGION=eu-west-1
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

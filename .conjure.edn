@@ -1,10 +1,21 @@
 {:conns
- {:dev {:port 5885}
-  :jvm {:port 5555}
-  :node {:port 5556, :lang :cljs}
-  :browser {:port 5557, :lang :cljs}}
+ {
+  ;:dev {:port 5885}
+  ;:node {:port 5556, :lang :cljs}
+  ;:browser {:port 5557, :lang :cljs}
+  :jvm {:port 5555
+        :hooks {:connect! (fn [conn]
+                            #?(:clj
+                               (do
+                                 (require 'cognitect.rebl)
+                                 ((resolve 'cognitect.rebl/ui)))))
+                :result! (fn [{:keys [code result]}]
+                           (do
+                             (println code result)
+                             (cognitect.rebl/submit code result)))}}}
 
  :refresh
  {:before clojure.core/prn
   :after clojure.core/prn
-  :dirs #{"src"}}}
+  :dirs #{"src"
+          "test"}}}

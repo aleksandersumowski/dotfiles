@@ -1,6 +1,7 @@
 "vim command completion
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
+set completeopt-=preview
 set backupdir=~/.vim/backup//
 set clipboard+=unnamedplus                                        " yank and paste with the system clipboard
 set directory=~/.vim/swapfiles//
@@ -32,43 +33,56 @@ set wildmenu                                                 " show a navigable 
 set wildmode=longest,list,full
 
 let mapleader = ','
+let maplocalleader = ','
 let g:strip_whitespace_on_save = 1
 let g:C_Ctrl_j = 'off'
 let g:BASH_Ctrl_j = 'off'
 let g:python3_host_prog=$HOME.'/.pythons/neovim/bin/python3'
+"let g:conjure_log_direction="horizontal"
+""let g:coc_global_extensions = ['coc-conjure']
+let g:deoplete#enable_at_startup = 1
+
+let g:iced_enable_default_key_mappings = v:true
+
 
 map <C-i> :GFiles<CR>
-map <C-o> :Buffers<CR>
+map <C-b> :Buffers<CR>
 map <C-p> :FZFMru<CR>
+nmap <leader>a :Rg 
 
 
-nmap <leader>a :Grepper -tool rg -noprompt -query 
+"nmap <C-i> :Clap git_files<CR>
+"nmap <C-b> :Clap buffers<CR>
+"nmap <C-p> :Clap history<CR>
+
+"nmap <leader>l :Clap blines<CR>
+"nmap <leader>a :Clap grep<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
-nmap <leader>r :Require<CR>
-nmap <leader>e :Eval<CR>
-
-let g:ackprg = 'rg --vimgrep --no-heading'
 
 function! FormatJSON()
     :%!python -m json.tool
 endfunction
 
-let g:grepper = { 'tools': ['rg', 'git'], }
-
-
-
 call plug#begin()
-Plug 'eraserhd/parinfer-rust'
-
+"Plug 'eraserhd/parinfer-rust'
+"Plug 'liuchengxu/vim-clap'
+Plug 'guns/vim-sexp'
+Plug 'dense-analysis/ale'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liquidz/vim-iced'
+Plug 'jiangmiao/auto-pairs'
+Plug 'liquidz/vim-iced-kaocha'
+Plug 'liquidz/vim-iced-coc-source'
 Plug 'rust-lang/rust.vim'
-Plug 'Olical/conjure', { 'tag': 'v2.0.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
+Plug 'vim-scripts/paredit.vim'
+"Plug 'Olical/conjure', { 'tag': 'v2.1.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
+Plug 'SirVer/ultisnips'
 
 Plug 'tmux-plugins/vim-tmux'
 Plug 'christoomey/vim-tmux-navigator'
@@ -88,22 +102,21 @@ Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'simnalamburt/vim-mundo'
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
 
 " specific languages/data formats
 Plug 'chrisbra/csv.vim'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
+"Plug 'kovisoft/paredit'
 call plug#end()
 
-set background=dark
 colorscheme gruvbox
 
 autocmd BufNewFile,BufRead *.cljx set ft=clojure
