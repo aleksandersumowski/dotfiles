@@ -1,0 +1,37 @@
+[user]
+  name = Aleksander Sumowski
+  email = 
+[core]
+  editor = vim
+  excludesfile = ~/.gitexludes
+[color]
+  ui = true
+[push]
+  default = simple
+[pull]
+  ff = only
+  rebase = true
+[diff]
+  indentHeuristic = true
+  tool = vimdiff
+[apply]
+  whitespace = strip
+[pager]
+  color = true
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+[status]
+  color = auto
+[difftool]
+  prompt = false
+[difftool "vimdiff"]
+  trustExitCode = true
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+  keepBackup = false
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[alias]
+  praise = blame
