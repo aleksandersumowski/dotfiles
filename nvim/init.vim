@@ -24,7 +24,8 @@ set shiftwidth=2                                             " normal mode inden
 "completion
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.so,*.swp,*.class,**/.sass-cache/**
 set wildmenu                                                 " show a navigable menu for tab completion
-set wildmode=longest,list,full
+set wildmode=list:longest,full
+set wildchar=<tab>
 set completeopt-=preview
 
 "searching
@@ -55,13 +56,10 @@ Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'dense-analysis/ale'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'liquidz/vim-iced'
 Plug 'jiangmiao/auto-pairs'
-Plug 'liquidz/vim-iced-kaocha'
-Plug 'liquidz/vim-iced-coc-source'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
-"Plug 'Olical/conjure', { 'tag': 'v2.1.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
+Plug 'Olical/conjure', { 'tag': 'v2.1.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -92,7 +90,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'simnalamburt/vim-mundo'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
-
 call plug#end()
 
 colorscheme gruvbox
