@@ -9,7 +9,6 @@ set hidden " hide abandoned buffers instead of unloading
 set mouse=a
 set number                    " line numbers
 set scrolloff=5
-set statusline=%{fugitive#statusline()}%F
 set termguicolors
 
 "white chars
@@ -35,14 +34,16 @@ set smartcase                                                " case-sensitive se
 set inccommand=split
 set incsearch
 
-map <C-i> :GFiles<CR>
-map <C-b> :Buffers<CR>
-map <C-p> :FZFMru<CR>
+nmap <C-i> :GFiles<CR>
+nmap <C-b> :Buffers<CR>
+nmap <C-p> :FZFMru<CR>
 nmap <localleader>a :Rg 
 
 
 nmap <localleader>d :NERDTreeToggle<CR>
 nmap <localleader>f :NERDTreeFind<CR>
+let g:conjure_log_direction = "horizontal"
+let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
 let g:AutoPairsFlyMode = 1
 
 function! FormatJSON()
@@ -55,18 +56,19 @@ call plug#begin()
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
 
-Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
-Plug 'Olical/conjure', { 'tag': 'v2.1.0', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
+Plug 'Olical/conjure', { 'tag': '*', 'do': 'bin/compile', 'for': 'clojure', 'on': 'ConjureAdd'  }
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 
-Plug 'tmux-plugins/vim-tmux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 
