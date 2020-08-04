@@ -1,13 +1,15 @@
 export ZSH=$HOME/.oh-my-zsh
+
 setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
-plugins=(git vi-mode aws brew last-working-dir kubectl terraform sbt docker fasd)
+plugins=(git vi-mode aws brew last-working-dir terraform sbt docker fasd alias-finder)
 
+ZSH_ALIAS_FINDER_AUTOMATIC=true
 #we don't need terminals without tmux
 alias tmux="env TERM=xterm-256color tmux"
 case $- in *i*)
-      if [ -z "$TMUX" ]; then exec tmux -2; fi
+      if [ -z "$TMUX" ]; then exec tmux -2 new-session -A -s main; fi
 esac
 
 # extra config
@@ -23,8 +25,8 @@ function source_if_exists {
 }
 
 source_if_exists "${HOME}/.aliases"
-source_if_exists "${HOME}/.paths"
 source_if_exists "${HOME}/.profile"
+source_if_exists "${HOME}/.paths"
 source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 source_if_exists "${HOME}/.fzf.zsh"
 [[ $(uname) == "Darwin" ]] && source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
@@ -33,6 +35,10 @@ export EDITOR=`which nvim`
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 bindkey -v
+bindkey '^r' history-incremental-search-backward
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^?' backward-delete-char
 export KEYTIMEOUT=1
 
 autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
@@ -42,3 +48,8 @@ compinit
 export AWS_REGION=eu-west-1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+precmd() { }
+eval "$(pyenv init -)"
+
+
+
