@@ -49,7 +49,9 @@ export AWS_REGION=eu-west-1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 precmd() { }
+export LANG="en_US.UTF-8"
 eval "$(pyenv init -)"
 
 
+source ~/.disneyrc
 

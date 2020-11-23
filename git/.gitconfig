@@ -1,9 +1,12 @@
 [user]
   name = Aleksander Sumowski
-  email = 
+  email = github@sumowski.pl
 [core]
   editor = vim
-  excludesfile = ~/.gitexludes
+  excludesfile = /Users/aleksandersumowski/.gitignore_global
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
 [color]
   ui = true
 [push]
@@ -18,8 +21,6 @@
   whitespace = strip
 [pager]
   color = true
-  diff = diff-so-fancy | less --tabs=1,5 -RFX
-  show = diff-so-fancy | less --tabs=1,5 -RFX
 [status]
   color = auto
 [difftool]
@@ -35,3 +36,25 @@
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [alias]
   praise = blame
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  theme = "Nord"
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
