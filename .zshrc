@@ -1,9 +1,12 @@
-export ZSH=$HOME/.oh-my-zsh
+gxport ZSH=$HOME/.oh-my-zsh
 
 setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
-plugins=(git vi-mode aws brew last-working-dir terraform sbt docker fasd alias-finder)
+plugins=(git aws brew last-working-dir terraform sbt docker fasd alias-finder
+# vi-mode
+zsh-vi-mode
+)
 
 ZSH_ALIAS_FINDER_AUTOMATIC=true
 #we don't need terminals without tmux
@@ -29,6 +32,7 @@ source_if_exists "${HOME}/.profile"
 source_if_exists "${HOME}/.paths"
 source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 source_if_exists "${HOME}/.fzf.zsh"
+source_if_exists "${HOME}/tools/zsh-vim-mode/zsh-vim-mode.plugin.zsh"
 [[ $(uname) == "Darwin" ]] && source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
 
 export EDITOR=`which nvim`
