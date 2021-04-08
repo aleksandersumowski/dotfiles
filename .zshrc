@@ -1,14 +1,13 @@
-gxport ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
-plugins=(git aws brew last-working-dir terraform sbt docker fasd alias-finder
+plugins=(git aws brew last-working-dir terraform sbt docker fasd
 # vi-mode
 zsh-vi-mode
 )
 
-ZSH_ALIAS_FINDER_AUTOMATIC=true
 #we don't need terminals without tmux
 alias tmux="env TERM=xterm-256color tmux"
 case $- in *i*)
