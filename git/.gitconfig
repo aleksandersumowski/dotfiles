@@ -48,7 +48,7 @@
   cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
 [delta]
-  features = side-by-side line-numbers decorations
+  features = side-by-side decorations
   whitespace-error-style = 22 reverse
   theme = "Nord"
 [delta "decorations"]

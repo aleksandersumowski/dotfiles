@@ -31,7 +31,6 @@ source_if_exists "${HOME}/.profile"
 source_if_exists "${HOME}/.paths"
 source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 source_if_exists "${HOME}/.fzf.zsh"
-source_if_exists "${HOME}/tools/zsh-vim-mode/zsh-vim-mode.plugin.zsh"
 [[ $(uname) == "Darwin" ]] && source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
 
 export EDITOR=`which nvim`
@@ -58,3 +57,8 @@ eval "$(pyenv init -)"
 
 source ~/.disneyrc
 
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+
+alias luamake=/Users/aleksandersumowski/tools/lua-language-server/3rd/luamake/luamake
