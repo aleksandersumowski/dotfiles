@@ -16,7 +16,7 @@ set number                    " line numbers
 set scrolloff=5
 set termguicolors
 set shortmess+=c
-set shortmess-=F " required by nvim-metals
+" set shortmess-=F " required by nvim-metals
 
 "white chars
 set list " show trailing whitespace
@@ -184,12 +184,6 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-augroup lsp
-  au!
-  au FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  au FileType scala,sbt lua require("metals").initialize_or_attach(Metals_config)
-augroup end
-
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
