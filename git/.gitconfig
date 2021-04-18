@@ -1,6 +1,10 @@
 [user]
   name = Aleksander Sumowski
   email = github@sumowski.pl
+
+[includeIf "gitdir:~/work/"]
+  path = ~/work/gitconfig
+
 [core]
   editor = vim
   excludesfile = /Users/aleksandersumowski/.gitignore_global
