@@ -55,10 +55,11 @@
   features = side-by-side decorations
   whitespace-error-style = 22 reverse
   theme = "Nord"
+
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
   file-decoration-style = none
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/

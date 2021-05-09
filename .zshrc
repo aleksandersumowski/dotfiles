@@ -6,6 +6,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git aws brew last-working-dir terraform sbt docker fasd
 # vi-mode
 zsh-vi-mode
+fzf
 )
 
 #we don't need terminals without tmux
@@ -26,39 +27,29 @@ function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
 }
 
-source_if_exists "${HOME}/.aliases"
-source_if_exists "${HOME}/.profile"
-source_if_exists "${HOME}/.paths"
-source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
-source_if_exists "${HOME}/.fzf.zsh"
-[[ $(uname) == "Darwin" ]] && source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
 
 export EDITOR=`which nvim`
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
-bindkey -v
-bindkey '^r' history-incremental-search-backward
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
-bindkey '^?' backward-delete-char
 export KEYTIMEOUT=1
-
-autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
+#autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
 autoload -Uz compinit
 compinit
 
 export AWS_REGION=eu-west-1
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-precmd() { }
 export LANG="en_US.UTF-8"
 eval "$(pyenv init -)"
-
-
-source ~/.disneyrc
-
-
-# added by Snowflake SnowSQL installer v1.2
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
-
 alias luamake=/Users/aleksandersumowski/tools/lua-language-server/3rd/luamake/luamake
+source ~/.disneyrc
+source_if_exists "${HOME}/.aliases"
+#source_if_exists "${HOME}/.profile"
+source_if_exists "${HOME}/.paths"
+source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
+#source_if_exists "${HOME}/.iterm2_shell_integration.zsh"
+
+bindkey -v
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^?' backward-delete-char
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+export ZVM_VI_SURROUND_BINDKEY=s-prefix

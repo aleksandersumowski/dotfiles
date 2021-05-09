@@ -16,7 +16,7 @@ set number                    " line numbers
 set scrolloff=5
 set termguicolors
 set shortmess+=c
-" set shortmess-=F " required by nvim-metals
+set shortmess-=F " required by nvim-metals
 
 "white chars
 set list " show trailing whitespace
@@ -47,15 +47,18 @@ endfunction
 
 nmap <C-i> :Telescope git_files<CR>
 nmap <C-b> :Telescope buffers<CR>
-nmap <C-p> <cmd>Telescope frecency<cr>
+nmap <C-p> <cmd>Telescope oldfiles include_current_session=true<cr>
 nmap <C-l> <cmd>Telescope find_files<cr>
 nmap <localleader>a :Telescope live_grep<cr>
 nmap <localleader>d :NvimTreeToggle<CR>
+nmap <localleader>f :NvimTreeFindFile<CR>
 
 let g:conjure_log_direction = "horizontal"
+let g:conjure#log#botright = v:true
 let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+let g:conjure#log#wrap = v:true
+" nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+" nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 let g:ale_linters = {
       \   'python': ['flake8', 'pylint'],
       \   'ruby': ['standardrb', 'rubocop'],
@@ -87,15 +90,20 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " pretty vim
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
-Plug 'arcticicestudio/nord-vim'
-Plug 'gelguy/wilder.nvim'
+" Plug 'gelguy/wilder.nvim'
 Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
+" colours!!!
+Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
+Plug 'kunzaatko/nord.nvim', { 'branch': 'trunk' }
+Plug 'npxbr/gruvbox.nvim', { 'branch': 'main' }
+Plug 'savq/melange'
 
 " ide
 Plug 'b3nj5m1n/kommentary', {'branch': 'main'}
 Plug 'dense-analysis/ale'
 Plug 'tami5/sql.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
@@ -104,7 +112,7 @@ Plug 'mfussenegger/nvim-dap'
 " tricks
 Plug 'simnalamburt/vim-mundo'
 Plug 'jiangmiao/auto-pairs'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'folke/which-key.nvim'
 
 " editing
 Plug 'machakann/vim-sandwich' " text objects surround
@@ -135,21 +143,22 @@ Plug 'numirias/semshi', { 'for': 'python' }
 Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'hashivim/vim-terraform'
+
 call plug#end()
 
-colorscheme nord
+colorscheme gruvbox
 
-call wilder#enable_cmdline_enter()
+" call wilder#enable_cmdline_enter()
 
-" only / and ? is enabled by default
-call wilder#set_option('modes', ['/', '?', ':'])
-call wilder#set_option('renderer', wilder#popupmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ }))
+" " only / and ? is enabled by default
+" call wilder#set_option('modes', ['/', '?', ':'])
+" call wilder#set_option('renderer', wilder#popupmenu_renderer({
+"       \ 'highlighter': wilder#basic_highlighter(),
+"       \ }))
 
-set wildcharm=<Tab>
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+" set wildcharm=<Tab>
+" cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+" cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -163,6 +172,11 @@ require("settings.lsp").setup()
 require('aniseed.env').init({ module = 'dotfiles.init' })
 
 require('gitsigns').setup()
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -170,6 +184,24 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = {},  -- list of language that will be disabled
+  },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
   },
   incremental_selection = {
     enable = true,
@@ -189,6 +221,15 @@ inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 lua << EOF
+nvim_tree_find_file = function()
+  local cwd = vim.fn.getcwd()
+  local cur_path = vim.fn.expand('%:p:h')
+  require('nvim-tree').refresh()
+  require('nvim-tree.lib').change_dir(cur_path)
+  require('nvim-tree').find_file(true)
+  vim.cmd('cd ' .. cwd)
+end
+
 local nvim_lsp = require('lspconfig')
 require("lspsaga").init_lsp_saga({
   server_filetype_map = { metals = { "sbt", "scala" } },
@@ -202,22 +243,6 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
-  buf_set_keymap("n", "gD", [[<cmd>lua vim.lsp.buf.definition()<CR>]])
-  buf_set_keymap("n", "K", [[<cmd>lua require"lspsaga.hover".render_hover_doc()<CR>]])
-  buf_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]])
-  buf_set_keymap("n", "gr", [[<cmd>lua vim.lsp.buf.references()<CR>]])
-  buf_set_keymap("n", "gds", [[<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>]])
-  buf_set_keymap("n", "gws", [[<cmd>lua require"settings.telescope".lsp_workspace_symbols()<CR>]])
-  buf_set_keymap("n", "<leader>rn", [[<cmd>lua require"lspsaga.rename".rename()<CR>]])
-  buf_set_keymap("n", "<leader>ca", [[<cmd>lua require"lspsaga.codeaction".code_action()<CR>]])
-  buf_set_keymap("v", "<leader>ca", [[<cmd>lua require"lspsaga.codeaction".range_code_action()<CR>]])
-  buf_set_keymap("n", "<leader>ws", [[<cmd>lua require"metals".worksheet_hover()<CR>]])
-  buf_set_keymap("n", "<leader>a", [[<cmd>lua require"metals".open_all_diagnostics()<CR>]])
-  buf_set_keymap("n", "<leader>d", [[<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>]]) -- buffer diagnostics only
-  buf_set_keymap("n", "]c", [[<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>]])
-  buf_set_keymap("n", "[c", [[<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>]])
-  buf_set_keymap("n", "<leader>ln", [[<cmd>lua vim.lsp.diagnostic.get_line_diagnostics()<CR>]])
-print('test')
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -248,3 +273,19 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 EOF
+
+nmap gD <cmd>lua vim.lsp.buf.definition()<CR>
+nmap K <cmd>lua require"lspsaga.hover".render_hover_doc()<CR>
+nmap gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nmap gr <cmd>lua vim.lsp.buf.references()<CR>
+nmap gds <cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>
+nmap gws <cmd>lua require"settings.telescope".lsp_workspace_symbols()<CR>
+nmap <leader>rn <cmd>lua require"lspsaga.rename".rename()<CR>
+nmap <leader>ca <cmd>lua require"lspsaga.codeaction".code_action()<CR>
+nmap <leader>ca <cmd>lua require"lspsaga.codeaction".range_code_action()<CR>
+nmap <leader>ws <cmd>lua require"metals".worksheet_hover()<CR>
+" nmap <leader>a <cmd>lua require"metals".open_all_diagnostics()<CR>
+" nmap <leader>d <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> -- buffer diagnostics only
+nmap ]c <cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>
+nmap [c <cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>
+nmap <leader>ln <cmd>lua vim.lsp.diagnostic.get_line_diagnostics()<CR>
