@@ -28,7 +28,7 @@ function source_if_exists {
 }
 
 
-export EDITOR=`which nvim`
+export EDITOR="/usr/local/bin/nvim"
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 export KEYTIMEOUT=1

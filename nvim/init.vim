@@ -18,6 +18,10 @@ set termguicolors
 set shortmess+=c
 set shortmess-=F " required by nvim-metals
 
+"folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 "white chars
 set list " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
@@ -63,11 +67,11 @@ let g:ale_linters = {
       \   'python': ['flake8', 'pylint'],
       \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint'],
-      \ 'clojure': ['clj-kondo', 'joker']
+      \   'clojure': ['clj-kondo', 'joker']
       \}
 
 let g:ale_fixers = {
-      \    'python': ['yapf'],
+      \   'python': ['yapf'],
       \}
 
 augroup YankHighlight
@@ -89,12 +93,14 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " pretty vim
 Plug 'kyazdani42/nvim-web-devicons'
+
 Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
 " Plug 'gelguy/wilder.nvim'
 Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
 " colours!!!
 Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
-Plug 'kunzaatko/nord.nvim', { 'branch': 'trunk' }
+Plug 'kunzaatko/nord.nvim', { 'branch': 'colourful' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'colourful' }
 Plug 'npxbr/gruvbox.nvim', { 'branch': 'main' }
 Plug 'savq/melange'
 
@@ -104,15 +110,20 @@ Plug 'dense-analysis/ale'
 Plug 'tami5/sql.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'simrat39/symbols-outline.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
+Plug 'folke/trouble.nvim', {'branch': 'main'}
 Plug 'mfussenegger/nvim-dap'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets', {'branch': 'main'}
 
 " tricks
 Plug 'simnalamburt/vim-mundo'
 Plug 'jiangmiao/auto-pairs'
-Plug 'folke/which-key.nvim'
+Plug 'folke/which-key.nvim', {'branch': 'main'}
 
 " editing
 Plug 'machakann/vim-sandwich' " text objects surround
@@ -140,13 +151,15 @@ Plug 'Olical/conjure', {'tag': '*', 'for': 'clojure' }
 Plug 'tami5/compe-conjure', {'for': 'clojure'}
 Plug 'bfredl/nvim-ipy', { 'for': 'python' }
 Plug 'numirias/semshi', { 'for': 'python' }
+Plug 'bfredl/nvim-luadev'
+Plug 'rafcamlet/nvim-luapad'
 Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme nord
 
 " call wilder#enable_cmdline_enter()
 
@@ -231,6 +244,39 @@ nvim_tree_find_file = function()
 end
 
 local nvim_lsp = require('lspconfig')
+-- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+local sumneko_root_path = '/Users/aleksandersumowski/tools/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 require("lspsaga").init_lsp_saga({
   server_filetype_map = { metals = { "sbt", "scala" } },
   code_action_prompt = { virtual_text = false },
