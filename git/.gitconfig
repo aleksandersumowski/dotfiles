@@ -18,26 +18,28 @@
 [pull]
   ff = only
   rebase = true
-[diff]
-  indentHeuristic = true
-  tool = vimdiff
 [apply]
   whitespace = strip
 [pager]
   color = true
 [status]
   color = auto
+[diff]
+  indentHeuristic = true
+  tool = bc
 [difftool]
   prompt = false
 [difftool "vimdiff"]
   trustExitCode = true
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [merge]
-  tool = vimdiff
-[mergetool]
-  prompt = true
-  keepBackup = false
+  tool = bc
 [mergetool "vimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  conflictStyle = zdiff3
+[mergetool "bc"]
+  trustExitCode = true
 [alias]
   praise = blame
 [filter "lfs"]
@@ -45,16 +47,12 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-[mergetool "sourcetree"]
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
 [delta]
   features = side-by-side decorations
   whitespace-error-style = 22 reverse
+  wrap-max-lines=unlimited
   theme = "Nord"
+  line-numbers = true
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul

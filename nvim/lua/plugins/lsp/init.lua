@@ -37,6 +37,7 @@ nmap gr <cmd>lua vim.lsp.buf.references()<CR>
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', 'K', '<Cmd>lua require"lspsaga.hover".render_hover_doc()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<space>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- conflict with tmux buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -56,7 +57,7 @@ end
 local register_lua_lsp = function()
   -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
   local sumneko_root_path = '/Users/aleksandersumowski/tools/lua-language-server'
-  local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+  local sumneko_binary = sumneko_root_path.."/bin/lua-language-server"
 
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, "lua/?.lua")
@@ -102,7 +103,7 @@ M.setup = function()
         information = "",
         other = "﫠"
     },
-    use_lsp_diagnostic_signs = true })
+    use_diagnostic_signs = true })
 
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches

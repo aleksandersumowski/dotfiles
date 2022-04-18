@@ -1,4 +1,4 @@
-let g:python3_host_prog=$HOME."/.pyenv/versions/3.9.6/bin/python3"
+let g:python3_host_prog=$HOME."/.pyenv/versions/3.9.7/bin/python3"
 
 let mapleader = ','
 let maplocalleader = ','
@@ -106,6 +106,7 @@ Plug 'folke/trouble.nvim', {'branch': 'main'}
 Plug 'mfussenegger/nvim-dap'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets', {'branch': 'main'}
+Plug 'tanvirtin/vgit.nvim', {'branch': 'main'}
 
 " tricks
 Plug 'mbbill/undotree'
@@ -129,6 +130,7 @@ Plug 'tmux-plugins/vim-tmux' " for editing tmux.conf
 Plug 'roxma/vim-tmux-clipboard'
 
 " specific languages
+Plug 'neo4j-contrib/cypher-vim-syntax'
 Plug 'bakpakin/fennel.vim'
 Plug 'Olical/aniseed', { 'tag': '*' }
 Plug 'scalameta/nvim-metals', { 'branch': 'main' }
@@ -137,6 +139,7 @@ Plug 'clojure-vim/vim-jack-in', { 'for': 'clojure' }
 Plug 'Olical/conjure', {'tag': '*' }
 Plug 'bfredl/nvim-luadev'
 Plug 'rafcamlet/nvim-luapad'
+Plug 'fatih/vim-go'
 Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'hashivim/vim-terraform'
@@ -153,6 +156,7 @@ function members(t)
   end
 end
 
+require('vgit').setup()
 require('gitsigns').setup()
 require("which-key").setup {}
 
@@ -188,3 +192,9 @@ nmap gds <cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>
 nmap gws <cmd>lua require"settings.telescope".lsp_workspace_symbols()<CR>
 map <C-h> :TmuxNavigateLeft<CR>
 map <C-l> :TmuxNavigateRight<CR>
+
+
+augroup bigquery
+  au!
+  autocmd BufNewFile,BufRead *.bq   set syntax=sql
+augroup END

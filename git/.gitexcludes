@@ -22,4 +22,7 @@ docker-compose.local.yml
 pom.xml
 pom.xml.asc
 profiles.clj
+.python-version
+.gradle
+out/
 .DS_Store
