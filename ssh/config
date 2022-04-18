@@ -1,0 +1,15 @@
+Host gitlab.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/mac_id_rsa
+
+Host github.com
+  Hostname github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  User aleksandersumowski
+  IdentityFile ~/.ssh/mac_id_rsa
+
+Host remarkable
+  Hostname 192.168.100.190
+  User root

@@ -1,0 +1,7 @@
+--type-add
+tfstate:*.tfstate
+--type-add
+tfstate:*.tfstate.backup
+
+--type-not
+tfstate

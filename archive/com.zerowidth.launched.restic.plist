@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.zerowidth.launched.restic</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>sh</string>
+		<string>-c</string>
+		<string>/Users/aleksandersumowski/tools/dotfiles/restic_backup.sh</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>4</integer>
+	</dict>
+	<key>UserName</key>
+	<string>aleksandersumowski</string>
+        <key>StandardOutPath</key>
+        <string>/Users/aleksandersumowski/tmp/restic_std_out</string>
+        <key>StandardErrorPath</key>
+        <string>/Users/aleksandersumowski/tmp/restic_err_out</string>
+</dict>
+</plist>

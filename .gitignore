@@ -1,0 +1,6 @@
+.#*
+core.edn
+.dir-locals.el
+.idea
+*.iml
+.cpcache
