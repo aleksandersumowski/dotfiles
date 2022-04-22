@@ -24,7 +24,12 @@ return require('packer').startup(function(use)
   use 'shaunsingh/nord.nvim'
 
   -- ide
-  use {'b3nj5m1n/kommentary', branch = 'main'}
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
   use 'tami5/sql.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/playground'
