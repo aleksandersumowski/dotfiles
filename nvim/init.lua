@@ -31,7 +31,7 @@ vim.opt.wildignore= {".git","log/**","node_modules/**","target/**",".metals",".b
 vim.opt.wildmenu = true
 vim.opt.wildmode={list="longest",full}
 vim.opt.wildchar=('<tab>'):byte()
-vim.opt.completeopt={menu,menuone,noinsert,noselect}
+vim.opt.completeopt={menu,menuone,noselect}
 
 --searching
 vim.opt.hlsearch = true
