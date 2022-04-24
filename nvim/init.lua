@@ -1,3 +1,4 @@
+require("impatient").enable_profile()
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 vim.g.python3_host_prog = vim.env.HOME .. "/.pyenv/versions/3.9.7/bin/python3"

@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
   -- util
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
+  use 'lewis6991/impatient.nvim'
 
 
   -- navigate
