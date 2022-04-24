@@ -46,12 +46,6 @@ vim.g.conjure_log_blacklist = {"up", "ret", "ret-multiline", "load-file", "eval"
 vim.g["conjure#log#wrap"] = true
 vim.g.nvim_tree_respect_buf_cwd = 1
 
-local function members(t)
-        for k,v in pairs(t) do
-                print(k .. ": " .. tostring(v))
-        end
-end
-
 require('plugins')
 require('vgit').setup()
 require('gitsigns').setup()
