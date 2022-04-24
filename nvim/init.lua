@@ -52,7 +52,6 @@ require('gitsigns').setup()
 require("which-key").setup {}
 
 -- my custom plugin setups
-require("plugins.galaxyline").setup()
 require("plugins.telescope").setup()
 require('plugins.treesitter').setup()
 require('plugins.lsp').setup()
