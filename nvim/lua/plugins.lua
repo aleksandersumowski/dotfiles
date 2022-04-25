@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-frecency.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', branch = 'main', run = 'make' }
+  use 'ilAYAli/scMRU.nvim'
 
   -- pretty vim
   use 'kyazdani42/nvim-web-devicons'
@@ -24,6 +25,15 @@ return require('packer').startup(function(use)
     end
   }
   use {'lewis6991/gitsigns.nvim', branch = 'main'}
+  use {'lukas-reineke/indent-blankline.nvim', config = function ()
+          vim.opt.listchars:append("space:⋅")
+          vim.opt.listchars:append("eol:↴")
+          require("indent_blankline").setup {
+                  space_char_blankline = " ",
+                  show_current_context = true,
+                  show_current_context_start = true,
+          }
+  end}
 
   -- colours!!!
   use {'rktjmp/lush.nvim', branch = 'main' }
@@ -47,6 +57,13 @@ return require('packer').startup(function(use)
   use {'hrsh7th/cmp-buffer', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lua', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lsp', branch = 'main'}
+  use {
+          'petertriho/cmp-git',
+          requires = "nvim-lua/plenary.nvim",
+          config = function()
+                  require("cmp_git").setup()
+          end
+  }
   use 'PaterJason/cmp-conjure'
   use 'saadparwaiz1/cmp_luasnip'
   use {'folke/trouble.nvim', branch = 'main'}

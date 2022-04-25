@@ -69,6 +69,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
+    loaded = true,
+    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   ["FixCursorHold.nvim"] = {
     loaded = true,
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
@@ -98,6 +104,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/cmp-conjure",
     url = "https://github.com/PaterJason/cmp-conjure"
+  },
+  ["cmp-git"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fcmp_git\frequire\0" },
+    loaded = true,
+    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/cmp-git",
+    url = "https://github.com/petertriho/cmp-git"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
@@ -134,11 +146,6 @@ _G.packer_plugins = {
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["galaxyline.nvim"] = {
-    loaded = true,
-    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/galaxyline.nvim",
-    url = "https://github.com/NTBBloodbath/galaxyline.nvim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -149,15 +156,26 @@ _G.packer_plugins = {
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/npxbr/gruvbox.nvim"
   },
-  kommentary = {
+  ["impatient.nvim"] = {
     loaded = true,
-    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/kommentary",
-    url = "https://github.com/b3nj5m1n/kommentary"
+    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lualine.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\flualine\frequire\0" },
+    loaded = true,
+    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["lush.nvim"] = {
     loaded = true,
@@ -240,6 +258,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  ["scMRU.nvim"] = {
+    loaded = true,
+    path = "/Users/aleksandersumowski/.local/share/nvim/site/pack/packer/start/scMRU.nvim",
+    url = "https://github.com/ilAYAli/scMRU.nvim"
   },
   ["sql.nvim"] = {
     loaded = true,
@@ -360,12 +383,24 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\flualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
+-- Config for: cmp-git
+time([[Config for cmp-git]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fcmp_git\frequire\0", "config", "cmp-git")
+time([[Config for cmp-git]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-python-pep8-indent', 'vim-pythonsense'}, { ft = "python" }, _G.packer_plugins)]]
 vim.cmd [[au FileType clojure ++once lua require("packer.load")({'paredit', 'vim-jack-in'}, { ft = "clojure" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-pythonsense', 'vim-python-pep8-indent'}, { ft = "python" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
