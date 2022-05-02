@@ -4,7 +4,7 @@ setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
 plugins=(
-git aws brew last-working-dir terraform sbt docker fasd fzf
+git aws brew last-working-dir terraform sbt docker fasd fzf kubectl
 # vi-mode
 zsh-vi-mode
 )

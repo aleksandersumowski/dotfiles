@@ -104,6 +104,8 @@ nnoremap <leader>uh :action LocalHistory.ShowHistory<CR>
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
 
+" Kubernetes
+nnoremap <leader>kt :action Kubernetes.HelmTemplateDiff
 " Navigation
 nnoremap ]c :action GotoNextError<cr>
 nnoremap [c :action GotoPreviousError<cr>
