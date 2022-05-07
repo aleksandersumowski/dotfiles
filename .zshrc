@@ -21,6 +21,7 @@ export LANG="en_US.UTF-8"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
+export ZVM_VI_EDITOR=$EDITOR
 
 ##we don't need terminals without tmux
 alias tmux="env TERM=xterm-256color tmux"
