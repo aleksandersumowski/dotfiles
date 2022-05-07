@@ -16,6 +16,9 @@ vim.opt.number = true -- line numbers
 vim.opt.scrolloff=5
 vim.opt.termguicolors = true
 vim.opt.shortmess = vim.opt.shortmess + 'c'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevelstart = 99
 
 --white chars
 vim.opt.list = true -- show trailing whitespace
