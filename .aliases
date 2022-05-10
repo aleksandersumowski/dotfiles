@@ -1,7 +1,6 @@
 #let there be colour
 alias dir='dir --color=auto'
 alias grep='grep --color=auto'
-alias fd='fdfind'
 alias gup='git pull --rebase --autostash'
 alias gupm='git pull --rebase --autostash origin master && git rebase --autostash master'
 

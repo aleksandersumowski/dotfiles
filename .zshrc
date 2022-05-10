@@ -5,6 +5,7 @@ unsetopt beep
 ZSH_THEME="robbyrussell"
 plugins=(
 git aws brew last-working-dir terraform sbt docker fasd fzf kubectl
+helm
 # vi-mode
 zsh-vi-mode
 )
