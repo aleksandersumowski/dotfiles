@@ -12,7 +12,10 @@ zsh-vi-mode
 # extra config
 source $ZSH/oh-my-zsh.sh
 
-
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000000
+export SAVEHIST=1000000000
+setopt EXTENDED_HISTORY
 export EDITOR="/usr/local/bin/nvim"
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
