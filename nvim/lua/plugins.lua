@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
+  use 'ggandor/lightspeed.nvim'
   use 'tami5/sql.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/playground'

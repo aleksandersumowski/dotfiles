@@ -33,9 +33,9 @@ vim.opt.expandtab=true
 --completion
 vim.opt.wildignore= {".git","log/**","node_modules/**","target/**",".metals",".bloop","tmp/**","*.rbc","*.so","*.swp","*.class","**/.sass-cache/**"}
 vim.opt.wildmenu = true
-vim.opt.wildmode={list="longest",full}
+vim.opt.wildmode="longest:full,lastused"
 vim.opt.wildchar=('<tab>'):byte()
-vim.opt.completeopt={menu,menuone,noselect}
+vim.opt.completeopt={'longest','menuone','noselect'}
 
 --searching
 vim.opt.hlsearch = true
