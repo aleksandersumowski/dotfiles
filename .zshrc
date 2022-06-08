@@ -28,10 +28,10 @@ export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
 
 ##we don't need terminals without tmux
-alias tmux="env TERM=xterm-256color tmux"
-case $- in *i*)
-      if [ -z "$TMUX" ]; then exec tmux -2 new-session -A -s main; fi
-esac
+# alias tmux="env TERM=xterm-256color tmux"
+# case $- in *i*)
+#       if [ -z "$TMUX" ]; then exec tmux -2 new-session -A -s main; fi
+# esac
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 
 eval "$(pyenv init --path)"
