@@ -8,7 +8,14 @@ return require('packer').startup(function(use)
 
 
   -- navigate
-  use 'kyazdani42/nvim-tree.lua'
+  use {'kyazdani42/nvim-tree.lua',
+       config = function()
+               require('nvim-tree').setup {
+               respect_buf_cwd = true
+               }
+       end
+       }
+
   use {'ahmedkhalf/project.nvim', branch = 'main' }
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-frecency.nvim'

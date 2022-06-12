@@ -47,7 +47,6 @@ vim.g.conjure_log_direction = "horizontal"
 vim.g["conjure#log#botright"] = true
 vim.g.conjure_log_blacklist = {"up", "ret", "ret-multiline", "load-file", "eval"}
 vim.g["conjure#log#wrap"] = true
-vim.g.nvim_tree_respect_buf_cwd = 1
 
 require('plugins')
 require('vgit').setup()
