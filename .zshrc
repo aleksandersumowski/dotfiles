@@ -1,3 +1,14 @@
+function is_osx() {
+    local platform=$(uname)
+    [ "$platform" == "Darwin" ]
+}
+
+function source_if_exists {
+    test -e $1 &&  source $1 || print  $1 " not found"
+}
+source_if_exists "${HOME}/.aliases"
+source_if_exists "${HOME}/.paths"
+source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 export ZSH=$HOME/.oh-my-zsh
 
 setopt hist_ignore_all_dups hist_save_no_dups notify
@@ -37,14 +48,6 @@ zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 eval "$(pyenv init --path)"
 
 
-function is_osx() {
-    local platform=$(uname)
-    [ "$platform" == "Darwin" ]
-}
-
-function source_if_exists {
-    test -e $1 &&  source $1 || print  $1 " not found"
-}
 
 
 ##autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
@@ -52,9 +55,6 @@ autoload -Uz compinit
 compinit
 
 alias luamake=/Users/aleksandersumowski/tools/lua-language-server/3rd/luamake/luamake
-source_if_exists "${HOME}/.aliases"
-source_if_exists "${HOME}/.paths"
-source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 bindkey -v
 bindkey '^a' beginning-of-line

@@ -1,1 +1,1 @@
-export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH:$HOME/.local/bin:$HOME/tools/google-cloud-sdk/bin:$HOME/go/bin:/usr/local/sbin:$HOME/bin:/Applications/Firefox Developer Edition.app/Contents/MacOS/:$HOME/.krew/bin"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH:$HOME/.local/bin:$HOME/tools/google-cloud-sdk/bin:$HOME/go/bin:/usr/local/sbin:$HOME/bin:/Applications/Firefox Developer Edition.app/Contents/MacOS/:$HOME/.krew/bin:/home/linuxbrew/.linuxbrew/bin/"
