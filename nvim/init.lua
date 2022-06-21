@@ -75,7 +75,6 @@ function _G.smart_tab()
 end
 
 vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
-
 vim.keymap.set('n','<leader>i', ':Telescope git_files<CR>')
 vim.keymap.set('n','<leader>p', ':Telescope oldfiles include_current_session=true<CR>')
 vim.keymap.set('n','<leader><tab>', ':Telescope buffers<CR>')
@@ -87,6 +86,8 @@ vim.keymap.set('n','<leader>f', ':NvimTreeFindFile<CR>')
 vim.keymap.set('n','<leader>s', ':source $MYVIMRC<CR>')
 vim.keymap.set('n','gds', '<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>')
 vim.keymap.set('n','gws', '<cmd>lua require"settings.telescope".lsp_workspace_symbols()<CR>')
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>')
+vim.keymap.set('n', 'j', '(v:count == 0) ? gj : j') -- use visual lines
 
 
 local augroup = vim.api.nvim_create_augroup('bigquery', {clear = true})
