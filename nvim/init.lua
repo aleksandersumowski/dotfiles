@@ -59,13 +59,6 @@ require('plugins.treesitter').setup()
 require('plugins.lsp').setup()
 require('plugins.cmp').setup()
 require("project_nvim").setup {}
-require('nvim-tree').setup({
-        update_cwd = true,
-        update_focused_file = {
-                enable = true,
-                update_cwd = true
-        },
-})
 vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
 vim.api.nvim_set_keymap("n", "<leader>H", "", {
         noremap = true,

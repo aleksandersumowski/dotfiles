@@ -11,7 +11,12 @@ return require('packer').startup(function(use)
   use {'kyazdani42/nvim-tree.lua',
        config = function()
                require('nvim-tree').setup {
-               respect_buf_cwd = true
+                       respect_buf_cwd = true,
+                       update_cwd = true,
+                       update_focused_file = {
+                               enable = true,
+                               update_cwd = true
+                       },
                }
        end
        }
