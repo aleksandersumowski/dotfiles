@@ -1,8 +1,8 @@
 local M = {}
 M.setup = function()
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"lua", "clojure", "kotlin", "norg", "java", "go"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    ignore_install = {'norg'}, -- List of parsers to ignore installing
+    ensure_installed = {"clojure", "python", "json", "kotlin", "java", "norg", "lua"},
+    ignore_install = {}, -- List of parsers to ignore installing
     highlight = {
       enable = true,              -- false will disable the whole extension
       disable = {},  -- list of language that will be disabled
