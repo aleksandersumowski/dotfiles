@@ -1,6 +1,10 @@
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+          require("toggleterm").setup{
+  }
+  end}
   -- util
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
