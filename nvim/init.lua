@@ -66,6 +66,7 @@ require('nvim-tree').setup({
                 update_cwd = true
         },
 })
+vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
 vim.api.nvim_set_keymap("n", "<leader>H", "", {
         noremap = true,
         callback = function()
