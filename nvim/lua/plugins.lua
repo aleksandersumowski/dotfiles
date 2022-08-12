@@ -29,7 +29,18 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-frecency.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', branch = 'main', run = 'make' }
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+    },
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
   use 'ilAYAli/scMRU.nvim'
+  use {'jeetsukumaran/vim-indentwise'}
+  use {'pedrohdz/vim-yaml-folds'}
 
   -- pretty vim
   use 'kyazdani42/nvim-web-devicons'
@@ -51,7 +62,9 @@ return require('packer').startup(function(use)
           }
   end}
 
-  -- colours!!!
+  use {'kevinhwang91/nvim-ufo', branch = 'main', requires = 'kevinhwang91/promise-async'}
+
+  -- -- colours!!!
   use {'rktjmp/lush.nvim', branch = 'main' }
   use {'npxbr/gruvbox.nvim', branch = 'main' }
   use 'shaunsingh/nord.nvim'
@@ -88,29 +101,29 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use {'rafamadriz/friendly-snippets', branch = 'main'}
   use {'tanvirtin/vgit.nvim', branch = 'main'}
-
-  -- tricks
+  --
+  -- -- tricks
   use 'mbbill/undotree'
   use 'jiangmiao/auto-pairs'
   use {'folke/which-key.nvim', branch = 'main'}
-
-  -- editing
+  --
+  -- -- editing
   use 'machakann/vim-sandwich' -- text objects surround
   use 'tpope/vim-rsi' -- use readline mappings in insert and command modes
   use 'tpope/vim-abolish' -- coercion camel/snake/etc
   use 'tpope/vim-repeat'
   use 'tpope/vim-unimpaired'
 
-  -- fixes
+  -- -- fixes
   use 'antoinemadec/FixCursorHold.nvim'
   use 'gioele/vim-autoswap' -- get rid of annoying messages when changing files
 
-  -- tmux
+  -- -- tmux
   use 'christoomey/vim-tmux-navigator'
   use 'tmux-plugins/vim-tmux' -- for editing tmux.conf
   use 'roxma/vim-tmux-clipboard'
 
-  -- specific languages
+  -- -- specific languages
   use 'neo4j-contrib/cypher-vim-syntax'
   use 'bakpakin/fennel.vim'
   use {'Olical/aniseed', tag = '*' }

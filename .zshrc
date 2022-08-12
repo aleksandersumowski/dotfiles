@@ -15,8 +15,9 @@ setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
 plugins=(
-git aws brew last-working-dir terraform sbt docker fasd fzf kubectl
+git brew last-working-dir terraform docker fzf kubectl
 helm
+zoxide
 # vi-mode
 zsh-vi-mode
 )
@@ -60,3 +61,5 @@ bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^?' backward-delete-char
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1

@@ -8,10 +8,11 @@ alias vim=`which nvim`
 
 alias lein="rlwrap lein"
 
-alias ki="kubectl --namespace=insurance"
 alias pp='python -mjson.tool'
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias top="sudo htop"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias more='bat'
+alias ls='exa'
+alias cd='z'

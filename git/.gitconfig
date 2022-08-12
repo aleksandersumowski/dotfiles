@@ -15,6 +15,7 @@
   ui = true
 [push]
   default = simple
+	autoSetupRemote = true
 [pull]
   ff = only
   rebase = true

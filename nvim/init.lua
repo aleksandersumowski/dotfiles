@@ -49,7 +49,7 @@ vim.g.conjure_log_blacklist = {"up", "ret", "ret-multiline", "load-file", "eval"
 vim.g["conjure#log#wrap"] = true
 
 require('plugins')
-require('vgit').setup()
+-- require('vgit').setup()
 require('gitsigns').setup()
 require("which-key").setup {}
 
