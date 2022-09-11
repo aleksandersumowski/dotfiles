@@ -28,6 +28,7 @@ vim.opt.listchars = { trail = '▫'
 }
 --tabbing
 vim.opt.tabstop=8
+vim.opt.shiftwidth=8
 vim.opt.expandtab=true
 
 --completion
@@ -87,7 +88,6 @@ vim.keymap.set('n','<leader>s', ':source $MYVIMRC<CR>')
 vim.keymap.set('n','gds', '<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>')
 vim.keymap.set('n','gws', '<cmd>lua require"settings.telescope".lsp_workspace_symbols()<CR>')
 vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>')
-vim.keymap.set('n', 'j', '(v:count == 0) ? gj : j') -- use visual lines
 
 
 local augroup = vim.api.nvim_create_augroup('bigquery', {clear = true})

@@ -1,10 +1,10 @@
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-          require("toggleterm").setup{
-  }
-  end}
+  -- use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+  --         require("toggleterm").setup{
+  -- }
+  -- end}
   -- util
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
        end
        }
 
-  use {'ahmedkhalf/project.nvim', branch = 'main' }
+  -- use {'ahmedkhalf/project.nvim', branch = 'main' }
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-frecency.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', branch = 'main', run = 'make' }
@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
       require('neoclip').setup()
     end,
   }
-  use 'ilAYAli/scMRU.nvim'
+  -- use 'ilAYAli/scMRU.nvim'
   use {'jeetsukumaran/vim-indentwise'}
   use {'pedrohdz/vim-yaml-folds'}
 
@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
           }
   end}
 
-  use {'kevinhwang91/nvim-ufo', branch = 'main', requires = 'kevinhwang91/promise-async'}
+  -- use {'kevinhwang91/nvim-ufo', branch = 'main', requires = 'kevinhwang91/promise-async'}
 
   -- -- colours!!!
   use {'rktjmp/lush.nvim', branch = 'main' }
@@ -77,11 +77,11 @@ return require('packer').startup(function(use)
       end
   }
   use 'ggandor/lightspeed.nvim'
-  use 'tami5/sql.nvim'
+  -- use 'tami5/sql.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'nvim-treesitter/playground'
+  -- use 'nvim-treesitter/playground'
   use 'ray-x/lsp_signature.nvim'
-  use 'simrat39/symbols-outline.nvim'
+  -- use 'simrat39/symbols-outline.nvim'
   use 'neovim/nvim-lspconfig'
   use {'hrsh7th/nvim-cmp', branch = 'main'}
   use {'hrsh7th/cmp-buffer', branch = 'main'}
@@ -97,10 +97,10 @@ return require('packer').startup(function(use)
   use 'PaterJason/cmp-conjure'
   use 'saadparwaiz1/cmp_luasnip'
   use {'folke/trouble.nvim', branch = 'main'}
-  use 'mfussenegger/nvim-dap'
-  use 'L3MON4D3/LuaSnip'
-  use {'rafamadriz/friendly-snippets', branch = 'main'}
-  use {'tanvirtin/vgit.nvim', branch = 'main'}
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'L3MON4D3/LuaSnip'
+  -- use {'rafamadriz/friendly-snippets', branch = 'main'}
+  -- use {'tanvirtin/vgit.nvim', branch = 'main'}
   --
   -- -- tricks
   use 'mbbill/undotree'
@@ -124,16 +124,16 @@ return require('packer').startup(function(use)
   use 'roxma/vim-tmux-clipboard'
 
   -- -- specific languages
-  use 'neo4j-contrib/cypher-vim-syntax'
-  use 'bakpakin/fennel.vim'
+  use {'neo4j-contrib/cypher-vim-syntax', ft = 'cypher'}
+  use {'bakpakin/fennel.vim', ft='fennel'}
   use {'Olical/aniseed', tag = '*' }
   use {'kovisoft/paredit', ft = 'clojure' }
   use {'clojure-vim/vim-jack-in', ft = 'clojure' }
   use {'Olical/conjure', tag = '*' }
   use {'jeetsukumaran/vim-pythonsense', ft = 'python' }
   use {'Vimjas/vim-python-pep8-indent', ft = 'python' }
-  use 'hashivim/vim-terraform'
-  use 'bfredl/nvim-luadev'
-  use 'rafcamlet/nvim-luapad'
+  use {'hashivim/vim-terraform', ft='terraform'}
+  use {'bfredl/nvim-luadev', ft='lua'}
+  use {'rafcamlet/nvim-luapad', ft='lua'}
 
 end)
