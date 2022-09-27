@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
 
   -- use {'ahmedkhalf/project.nvim', branch = 'main' }
   use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-frecency.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', branch = 'main', run = 'make' }
   use {
     "AckslD/nvim-neoclip.lua",
@@ -87,6 +86,7 @@ return require('packer').startup(function(use)
   use {'hrsh7th/cmp-buffer', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lua', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lsp', branch = 'main'}
+  use 'saadparwaiz1/cmp_luasnip'
   use {
           'petertriho/cmp-git',
           requires = "nvim-lua/plenary.nvim",
@@ -95,7 +95,7 @@ return require('packer').startup(function(use)
           end
   }
   use 'PaterJason/cmp-conjure'
-  use 'saadparwaiz1/cmp_luasnip'
+  use({"L3MON4D3/LuaSnip", tag = "v1.*"})
   use {'folke/trouble.nvim', branch = 'main'}
   -- use 'mfussenegger/nvim-dap'
   -- use 'L3MON4D3/LuaSnip'
