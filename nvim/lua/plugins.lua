@@ -75,7 +75,7 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
-  use 'ggandor/lightspeed.nvim'
+  -- use 'ggandor/lightspeed.nvim'
   -- use 'tami5/sql.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   -- use 'nvim-treesitter/playground'
@@ -108,7 +108,6 @@ return require('packer').startup(function(use)
   use {'folke/which-key.nvim', branch = 'main'}
   --
   -- -- editing
-  use 'machakann/vim-sandwich' -- text objects surround
   use 'tpope/vim-rsi' -- use readline mappings in insert and command modes
   use 'tpope/vim-abolish' -- coercion camel/snake/etc
   use 'tpope/vim-repeat'
@@ -135,5 +134,10 @@ return require('packer').startup(function(use)
   use {'hashivim/vim-terraform', ft='terraform'}
   use {'bfredl/nvim-luadev', ft='lua'}
   use {'rafcamlet/nvim-luapad', ft='lua'}
+  use 'machakann/vim-sandwich' -- text objects surround
+  use 'fatih/vim-go' -- for go templates!
+  use {'ggandor/leap.nvim', config = function ()
+          require('leap').add_default_mappings()
+  end}
 
 end)

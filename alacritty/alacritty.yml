@@ -41,6 +41,7 @@ cursor:
     blinking: On
 
   unfocused_hollow: false
-
+selection:
+  save_to_clipboard: true
 ## Live config reload
 live_config_reload: true

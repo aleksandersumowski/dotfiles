@@ -21,7 +21,7 @@ fzf
 git
 kubectl
 zoxide
-# zsh-vi-mode
+zsh-vi-mode
 # brew
 # last-working-dir
 # docker
