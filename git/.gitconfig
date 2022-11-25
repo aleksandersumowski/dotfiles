@@ -46,16 +46,23 @@
   process = git-lfs filter-process
   required = true
 [delta]
-  features = side-by-side decorations
+  features = regular-usage decorations
   whitespace-error-style = 22 reverse
   wrap-max-lines=unlimited
   theme = "Nord"
-  line-numbers = true
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
   file-decoration-style = none
+
+[delta "regular-usage"]
+  line-numbers = true
+  side-by-side = true
+
+[delta "copy"]
+  line-numbers = false
+  side-by-side = false
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
