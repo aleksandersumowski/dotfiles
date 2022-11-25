@@ -11,8 +11,13 @@
 source "${HOME}/.aliases"
 source "${HOME}/.paths"
 # source "${HOME}/.sdkman/bin/sdkman-init.sh"
+function source_if_exists {
+    test -e $1 &&  source $1 || print  $1 " not found"
+}
+source_if_exists "${HOME}/tools/dotfiles/.aliases"
+source_if_exists "${HOME}/.paths"
+source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 export ZSH=$HOME/.oh-my-zsh
-#
 setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
@@ -64,8 +69,6 @@ bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^?' backward-delete-char
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-PS1='$(kube_ps1)'$PS1
+#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+#PS1='$(kube_ps1)'$PS1
 
-# unsetopt XTRACE
-# exec 2>&3 3>&-
