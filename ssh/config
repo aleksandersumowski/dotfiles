@@ -1,14 +1,6 @@
-Host gitlab.com
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
   AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/mac_id_rsa
-
-Host github.com
-  Hostname github.com
-  AddKeysToAgent yes
-  UseKeychain yes
-  User aleksandersumowski
-  IdentityFile ~/.ssh/mac_id_rsa
 
 Host remarkable
   Hostname 192.168.100.190
