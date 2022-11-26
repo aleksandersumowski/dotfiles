@@ -59,22 +59,17 @@ end
 
 local register_lua_lsp = function()
   -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-  local sumneko_binary_path = vim.env.HOME .. '/tools/lua-language-server/bin/lua-language-server'
-  local main_path = vim.env.HOME .. "/tools/lua-language-server/bin/main.lua"
 
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
   require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary_path, "-E", main_path};
     settings = {
       Lua = {
         runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = 'LuaJIT',
-          -- Setup your lua path
-          path = runtime_path,
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
@@ -108,11 +103,10 @@ M.setup = function()
         other = "﫠"
     },
     use_diagnostic_signs = true })
-
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches
   local nvim_lsp = require('lspconfig')
-  local servers = {"pyright", "dockerls", "html", "jsonls", "yamlls", "clojure_lsp"}
+  local servers = {"dockerls", "jsonls", "yamlls", "clojure_lsp", "kotlin_language_server"}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,

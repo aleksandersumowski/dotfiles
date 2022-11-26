@@ -14,9 +14,6 @@ source "${HOME}/.paths"
 function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
 }
-source_if_exists "${HOME}/tools/dotfiles/.aliases"
-source_if_exists "${HOME}/.paths"
-source_if_exists "${HOME}/.sdkman/bin/sdkman-init.sh"
 export ZSH=$HOME/.oh-my-zsh
 setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
@@ -51,6 +48,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
+export XDG_CONFIG_HOME=$HOME/.config
 #
 # ##we don't need terminals without tmux
 # # alias tmux="env TERM=xterm-256color tmux"
