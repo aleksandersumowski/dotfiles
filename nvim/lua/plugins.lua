@@ -44,7 +44,8 @@ return require('packer').startup(function(use)
        }
 
   -- use {'ahmedkhalf/project.nvim', branch = 'main' }
-  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope.nvim', branch = '0.1.x' }
+
   use {'nvim-telescope/telescope-fzf-native.nvim', branch = 'main', run = 'make' }
   use {
     "AckslD/nvim-neoclip.lua",
