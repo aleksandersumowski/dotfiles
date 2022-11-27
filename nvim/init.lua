@@ -57,8 +57,13 @@ require("which-key").setup {}
 -- my custom plugin setups
 require("plugins.telescope").setup()
 require('plugins.treesitter').setup()
-require('plugins.lsp').setup()
+-- require('plugins.lsp').setup()
 require('plugins.cmp').setup()
+require("mason").setup()
+require("mason-lspconfig").setup({ensure_installed = {
+        "kotlin_language_server", "sumneko_lua"}})
+require("lspconfig").sumneko_lua.setup {}
+require("lspconfig").kotlin_language_server.setup {}
 vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
 vim.api.nvim_set_keymap("n", "<leader>H", "", {
         noremap = true,
