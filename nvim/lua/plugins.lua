@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
   use 'lewis6991/impatient.nvim'
-  use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
+  use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "jose-elias-alvarez/null-ls.nvim", "jayp0521/mason-null-ls.nvim" }
 
 
 
