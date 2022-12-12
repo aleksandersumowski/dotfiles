@@ -69,6 +69,7 @@ require("lspconfig").sumneko_lua.setup {diagnostics = {
       },}
 require("lspconfig").kotlin_language_server.setup {}
 require("lspconfig").clojure_lsp.setup {}
+require("lspconfig").terraform_lsp.setup {}
 require("lspconfig").rust_analyzer.setup {}
 local null_ls = require("null-ls")
 
