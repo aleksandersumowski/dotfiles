@@ -1,6 +1,7 @@
 set highlightedyank
 set ideajoin
 set surround
+set commentary
 set NERDTree
 
 let mapleader = ","

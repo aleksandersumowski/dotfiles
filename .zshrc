@@ -67,6 +67,6 @@ bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^?' backward-delete-char
-#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-#PS1='$(kube_ps1)'$PS1
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
 

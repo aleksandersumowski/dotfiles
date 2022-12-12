@@ -23,9 +23,7 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
   use 'lewis6991/impatient.nvim'
-  use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "jose-elias-alvarez/null-ls.nvim", "jayp0521/mason-null-ls.nvim" }
-
-
+  use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "jose-elias-alvarez/null-ls.nvim", "jayp0521/mason-null-ls.nvim", "j-hui/fidget.nvim" }
 
   -- navigate
   use {'kyazdani42/nvim-tree.lua',
@@ -146,6 +144,7 @@ return require('packer').startup(function(use)
   use {'kovisoft/paredit', ft = 'clojure' }
   use {'clojure-vim/vim-jack-in', ft = 'clojure' }
   use {'Olical/conjure', tag = '*' }
+  use {'udalov/kotlin-vim', branch = 'master'}
   use {'jeetsukumaran/vim-pythonsense', ft = 'python' }
   use {'Vimjas/vim-python-pep8-indent', ft = 'python' }
   use {'hashivim/vim-terraform', ft='terraform'}
