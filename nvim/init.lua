@@ -61,22 +61,27 @@ require('plugins.treesitter').setup()
 require('plugins.cmp').setup()
 require("mason").setup()
 require("mason-lspconfig").setup({ensure_installed = {
-        "kotlin_language_server", "sumneko_lua"}})
-require("lspconfig").sumneko_lua.setup {}
+        "kotlin_language_server", "rust_analyzer" ,"sumneko_lua", "clojure_lsp"}})
+require("lspconfig").sumneko_lua.setup {diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },}
 require("lspconfig").kotlin_language_server.setup {}
+require("lspconfig").clojure_lsp.setup {}
+require("lspconfig").rust_analyzer.setup {}
 local null_ls = require("null-ls")
 
 null_ls.setup({
-    sources = {
-            null_ls.builtins.diagnostics.clj_kondo,
-            null_ls.builtins.formatting.cljstyle ,
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.completion.spell,
-    },
+        sources = {
+                null_ls.builtins.diagnostics.clj_kondo,
+                null_ls.builtins.formatting.cljstyle ,
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.diagnostics.eslint,
+                null_ls.builtins.completion.spell,
+        },
 })
 require("mason-null-ls").setup({
-    ensure_installed = { "stylua", "jq" }
+    ensure_installed = { "stylua", "cljstyle", "jq", "rustfmt" }
 })
 vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
 vim.api.nvim_set_keymap("n", "<leader>H", "", {

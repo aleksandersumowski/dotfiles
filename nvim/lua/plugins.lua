@@ -95,7 +95,7 @@ return require('packer').startup(function(use)
   -- use 'ggandor/lightspeed.nvim'
   -- use 'tami5/sql.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  -- use 'nvim-treesitter/playground'
+  use 'nvim-treesitter/playground'
   use 'ray-x/lsp_signature.nvim'
   -- use 'simrat39/symbols-outline.nvim'
   use 'neovim/nvim-lspconfig'
