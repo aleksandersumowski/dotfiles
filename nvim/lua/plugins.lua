@@ -109,7 +109,7 @@ return require('packer').startup(function(use)
                   require("cmp_git").setup()
           end
   }
-  use 'PaterJason/cmp-conjure'
+  use({'PaterJason/cmp-conjure', ft = 'clojure'})
   use({"L3MON4D3/LuaSnip", tag = "v1.*"})
   use {'folke/trouble.nvim', branch = 'main'}
   -- use 'mfussenegger/nvim-dap'
@@ -143,8 +143,8 @@ return require('packer').startup(function(use)
   use {'Olical/aniseed', tag = '*' }
   use {'kovisoft/paredit', ft = 'clojure' }
   use {'clojure-vim/vim-jack-in', ft = 'clojure' }
-  use {'Olical/conjure', tag = '*' }
   use {'udalov/kotlin-vim', branch = 'master'}
+  use {'Olical/conjure', tag = '*', ft = 'clojure' }
   use {'jeetsukumaran/vim-pythonsense', ft = 'python' }
   use {'Vimjas/vim-python-pep8-indent', ft = 'python' }
   use {'hashivim/vim-terraform', ft='terraform'}

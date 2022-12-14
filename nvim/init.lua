@@ -63,10 +63,17 @@ require("fidget").setup{}
 require("mason").setup()
 require("mason-lspconfig").setup({ensure_installed = {
         "kotlin_language_server", "rust_analyzer" ,"sumneko_lua", "clojure_lsp"}})
-require("lspconfig").sumneko_lua.setup {diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },}
+        require("lspconfig").sumneko_lua.setup {
+                settings = {
+                        Lua = {
+                                runtime = { version = 'LuaJIT', },
+                                diagnostics = { globals = {'vim'}, },
+                                workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+                                telemetry = { enable = false, },
+                        },
+                },
+
+        }
 require("lspconfig").kotlin_language_server.setup {}
 require("lspconfig").clojure_lsp.setup {}
 require("lspconfig").terraform_lsp.setup {}
