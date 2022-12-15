@@ -6,7 +6,7 @@ M.setup = function()
   cmp.setup {
     snippet = {
        expand = function(args)
-         require'luasnip'.lsp_expand(args.body)
+         luasnip.lsp_expand(args.body)
        end
      },
     -- You must set mapping if you want.
@@ -28,10 +28,18 @@ M.setup = function()
     sources = {
       {name = 'nvim_lsp'},
       {name = 'luasnip'},
-      {name = 'nvim_lua'},
       {name = 'buffer'},
     }
   }
+
+  cmp.setup.filetype('lua', {
+          sources = {
+                  {name = 'nvim_lsp'},
+                  {name = 'nvim_lua'},
+                  {name = 'luasnip'},
+                  {name = 'buffer'},
+          }
+  })
 
   cmp.setup.filetype('clojure',{
           sources = {

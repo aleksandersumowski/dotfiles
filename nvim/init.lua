@@ -57,41 +57,8 @@ require("which-key").setup {}
 -- my custom plugin setups
 require("plugins.telescope").setup()
 require('plugins.treesitter').setup()
--- require('plugins.lsp').setup()
+require('plugins.lsp').setup()
 require('plugins.cmp').setup()
-require("fidget").setup{}
-require("mason").setup()
-require("mason-lspconfig").setup({ensure_installed = {
-        "kotlin_language_server", "rust_analyzer" ,"sumneko_lua", "clojure_lsp"}})
-        require("lspconfig").sumneko_lua.setup {
-                settings = {
-                        Lua = {
-                                runtime = { version = 'LuaJIT', },
-                                diagnostics = { globals = {'vim'}, },
-                                workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-                                telemetry = { enable = false, },
-                        },
-                },
-
-        }
-require("lspconfig").kotlin_language_server.setup {}
-require("lspconfig").clojure_lsp.setup {}
-require("lspconfig").terraform_lsp.setup {}
-require("lspconfig").rust_analyzer.setup {}
-local null_ls = require("null-ls")
-
-null_ls.setup({
-        sources = {
-                null_ls.builtins.diagnostics.clj_kondo,
-                null_ls.builtins.formatting.cljstyle ,
-                null_ls.builtins.formatting.stylua,
-                null_ls.builtins.diagnostics.eslint,
-                null_ls.builtins.completion.spell,
-        },
-})
-require("mason-null-ls").setup({
-    ensure_installed = { "stylua", "cljstyle", "jq", "rustfmt" }
-})
 vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
 vim.api.nvim_set_keymap("n", "<leader>H", "", {
         noremap = true,

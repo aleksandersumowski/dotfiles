@@ -101,6 +101,8 @@ return require('packer').startup(function(use)
   use {'hrsh7th/cmp-buffer', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lua', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lsp', branch = 'main'}
+  use {'hrsh7th/cmp-nvim-signature-help', branch = 'main'}
+  use {'hrsh7th/cmp-path', branch = 'main'}
   use 'saadparwaiz1/cmp_luasnip'
   use {
           'petertriho/cmp-git',
@@ -113,7 +115,6 @@ return require('packer').startup(function(use)
   use({"L3MON4D3/LuaSnip", tag = "v1.*"})
   use {'folke/trouble.nvim', branch = 'main'}
   -- use 'mfussenegger/nvim-dap'
-  -- use 'L3MON4D3/LuaSnip'
   -- use {'rafamadriz/friendly-snippets', branch = 'main'}
   -- use {'tanvirtin/vgit.nvim', branch = 'main'}
   --
@@ -144,6 +145,7 @@ return require('packer').startup(function(use)
   use {'kovisoft/paredit', ft = 'clojure' }
   use {'clojure-vim/vim-jack-in', ft = 'clojure' }
   use {'udalov/kotlin-vim', branch = 'master'}
+  use {'simrat39/rust-tools.nvim', branch = 'master'}
   use {'Olical/conjure', tag = '*', ft = 'clojure' }
   use {'jeetsukumaran/vim-pythonsense', ft = 'python' }
   use {'Vimjas/vim-python-pep8-indent', ft = 'python' }

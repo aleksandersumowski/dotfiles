@@ -1,9 +1,24 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+        ensure_installed = {
+        "kotlin_language_server", "rust_analyzer" ,"sumneko_lua", "clojure_lsp"}
+})
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+        sources = {
+                null_ls.builtins.diagnostics.clj_kondo,
+                null_ls.builtins.formatting.cljstyle ,
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.diagnostics.eslint,
+                null_ls.builtins.completion.spell,
+        },
+})
+require("mason-null-ls").setup({
+    ensure_installed = { "stylua", "cljstyle", "jq", "rustfmt" }
+})
 local M = {}
--- cap0.textDocument.foldingRange = {
---         dynamicRegistration = false,
---         lineFoldingOnly = true
--- }
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local vim_lsp = vim.lsp
 local handlers = vim_lsp.handlers
 
@@ -12,101 +27,57 @@ local pop_opts = { border = "rounded", max_width = 80 }
 handlers["textDocument/hover"] = vim_lsp.with(handlers.hover, pop_opts)
 handlers["textDocument/signatureHelp"] = vim_lsp.with(handlers.signature_help, pop_opts)
 
-local on_attach = function(_, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+local on_attach = function(_, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  --[[
-  nmap K <cmd>lua require"lspsaga.hover".render_hover_doc()<CR>
-  nmap gi <cmd>lua vim.lsp.buf.implementation()<CR>
-  nmap <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-
-nmap <leader>ln <cmd>lua vim.lsp.diagnostic.get_line_diagnostics()<CR>
-nmap <leader>ca <cmd>lua require"lspsaga.codeaction".code_action()<CR>
-nmap <leader>ca <cmd>lua require"lspsaga.codeaction".range_code_action()<CR>
-nmap <leader>rn <cmd>lua require"lspsaga.rename".rename()<CR>
-nmap [c <cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>
-nmap ]c <cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>
-nmap gr <cmd>lua vim.lsp.buf.references()<CR>
-  ]] --
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- buf_set_keymap('n', 'K', '<Cmd>lua require"lspsaga.hover".render_hover_doc()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<space>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- conflict with tmux buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,border=\'rounded\'})<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts={focusable=false,border=\'rounded\'}})<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts={focusable=false,border=\'rounded\'}})<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<space>s', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local register_lua_lsp = function()
-  -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-
-  local runtime_path = vim.split(package.path, ';')
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
-
-  require'lspconfig'.sumneko_lua.setup {
-    settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = 'LuaJIT',
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = {'vim', 'it', 'describe'},
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-          enable = false,
-        },
-      },
-    },
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
-end
-
-
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 M.setup = function()
-  register_lua_lsp()
 
-  require("trouble").setup( {   signs = {
-        error = "",
-        warning = "",
-        hint = "",
-        information = "",
-        other = "﫠"
-    },
-    use_diagnostic_signs = true })
+require("lspconfig").sumneko_lua.setup {
+        on_attach = on_attach,
+        settings = {
+                Lua = {
+                        runtime = { version = 'LuaJIT', },
+                        diagnostics = { globals = {'vim'}, },
+                        workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+                        telemetry = { enable = false, },
+                },
+        },
+        capabilities = capabilities
+}
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches
   local nvim_lsp = require('lspconfig')
-  local servers = {"dockerls", "jsonls", "yamlls", "clojure_lsp", "kotlin_language_server"}
+  local servers = {"dockerls", "jsonls", "yamlls", "clojure_lsp", "terraform_lsp",  "rust_analyzer", "kotlin_language_server"}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
