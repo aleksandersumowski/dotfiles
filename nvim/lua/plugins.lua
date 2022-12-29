@@ -101,7 +101,7 @@ return require('packer').startup(function(use)
   use {'hrsh7th/cmp-buffer', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lua', branch = 'main'}
   use {'hrsh7th/cmp-nvim-lsp', branch = 'main'}
-  use {'hrsh7th/cmp-nvim-signature-help', branch = 'main'}
+  use {'hrsh7th/cmp-nvim-lsp-signature-help', branch = 'main'}
   use {'hrsh7th/cmp-path', branch = 'main'}
   use 'saadparwaiz1/cmp_luasnip'
   use {
