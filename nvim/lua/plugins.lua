@@ -15,10 +15,10 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  -- use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-  --         require("toggleterm").setup{
-  -- }
-  -- end}
+  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+          require("toggleterm").setup{
+  }
+  end}
   -- util
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
@@ -113,7 +113,13 @@ return require('packer').startup(function(use)
   }
   use({'PaterJason/cmp-conjure', ft = 'clojure'})
   use({"L3MON4D3/LuaSnip", tag = "v1.*"})
-  use {'folke/trouble.nvim', branch = 'main'}
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup { }
+    end
+  }
   -- use 'mfussenegger/nvim-dap'
   -- use {'rafamadriz/friendly-snippets', branch = 'main'}
   -- use {'tanvirtin/vgit.nvim', branch = 'main'}
@@ -134,7 +140,10 @@ return require('packer').startup(function(use)
   use 'gioele/vim-autoswap' -- get rid of annoying messages when changing files
 
   -- -- tmux
-  use 'christoomey/vim-tmux-navigator'
+  use({
+      "aserowy/tmux.nvim",
+      config = function() require("tmux").setup() end
+  })
   use 'tmux-plugins/vim-tmux' -- for editing tmux.conf
   use 'roxma/vim-tmux-clipboard'
 
@@ -146,6 +155,13 @@ return require('packer').startup(function(use)
   use {'clojure-vim/vim-jack-in', ft = 'clojure' }
   use {'udalov/kotlin-vim', branch = 'master'}
   use {'simrat39/rust-tools.nvim', branch = 'master'}
+  use { 'saecki/crates.nvim',
+      tag = 'v0.3.0',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = function()
+          require('crates').setup()
+      end,
+  }
   use {'Olical/conjure', tag = '*', ft = 'clojure' }
   use {'jeetsukumaran/vim-pythonsense', ft = 'python' }
   use {'Vimjas/vim-python-pep8-indent', ft = 'python' }

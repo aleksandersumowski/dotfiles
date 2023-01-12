@@ -9,6 +9,7 @@ local null_ls = require("null-ls")
 null_ls.setup({
         sources = {
                 null_ls.builtins.diagnostics.clj_kondo,
+                null_ls.builtins.formatting.rustfmt,
                 null_ls.builtins.formatting.cljstyle ,
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.diagnostics.eslint,
@@ -77,7 +78,7 @@ require("lspconfig").sumneko_lua.setup {
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches
   local nvim_lsp = require('lspconfig')
-  local servers = {"dockerls", "jsonls", "yamlls", "clojure_lsp", "terraform_lsp",  "rust_analyzer", "kotlin_language_server"}
+  local servers = {"dockerls", "jsonls", "yamlls", "clojure_lsp", "terraform_lsp",  "kotlin_language_server"}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
@@ -85,5 +86,18 @@ require("lspconfig").sumneko_lua.setup {
     }
   end
 
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+      on_attach(_, bufnr)
+    end
+  },
+})
 end
 return M
