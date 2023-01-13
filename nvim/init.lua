@@ -1,7 +1,7 @@
 require("impatient").enable_profile()
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
-vim.g.python3_host_prog = vim.env.HOME .. "/.pyenv/versions/3.9.7/bin/python3"
+vim.g.python3_host_prog = vim.env.HOME .. "/.pyenv/versions/3.11.1/bin/python3"
 vim.g.C_Ctrl_j = 'off'
 vim.g.BASH_Ctrl_j = 'off'
 
