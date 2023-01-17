@@ -65,14 +65,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
 
--- require('vgit').setup()
--- require('gitsigns').setup()
--- require("which-key").setup {}
-
--- my custom plugin setups
--- require('config.treesitter').setup()
--- require('plugins.lsp').setup()
--- require('plugins.cmp').setup()
 vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
 vim.api.nvim_set_keymap("n", "<leader>H", "", {
         noremap = true,
@@ -80,6 +72,7 @@ vim.api.nvim_set_keymap("n", "<leader>H", "", {
                 print("Hello world!")
         end,
 })
+
 local function t(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
 end

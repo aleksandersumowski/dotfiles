@@ -1,4 +1,3 @@
-local M = {}
 M.setup = function()
   require'nvim-treesitter.configs'.setup {
     ensure_installed = {"clojure", "python", "json", "kotlin", "java", "norg", "lua"},

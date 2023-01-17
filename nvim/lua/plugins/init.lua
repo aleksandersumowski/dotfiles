@@ -1,7 +1,4 @@
 return {
-  -- {"akinsho/toggleterm.nvim", tag = '*', config = function()
-  --         require("toggleterm").setup{ }
-  -- end},
   -- util,
   -- { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "jose-elias-alvarez/null-ls.nvim", "jayp0521/mason-null-ls.nvim", "j-hui/fidget.nvim" },
 
@@ -31,7 +28,6 @@ return {
         require('lualine').setup({})
     end
   },
-  -- {'lewis6991/gitsigns.nvim', branch = 'main'},
   {'lukas-reineke/indent-blankline.nvim', config = function ()
           vim.opt.listchars:append("space:⋅")
           vim.opt.listchars:append("eol:↴")
@@ -44,10 +40,6 @@ return {
 
   -- {'kevinhwang91/nvim-ufo', branch = 'main', dependencies = 'kevinhwang91/promise-async'}
 
-  -- -- colours!!!
-  {'rktjmp/lush.nvim', branch = 'main' },
-  {'npxbr/gruvbox.nvim', branch = 'main' },
-
   -- ide
   {
       'numToStr/Comment.nvim',
@@ -57,26 +49,26 @@ return {
   },
   -- 'ggandor/lightspeed.nvim'
   -- 'tami5/sql.nvim'
-  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+  -- {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
   -- 'nvim-treesitter/playground',
   -- 'ray-x/lsp_signature.nvim',
   -- 'simrat39/symbols-outline.nvim',
   -- 'neovim/nvim-lspconfig',
-  {'hrsh7th/nvim-cmp', branch = 'main'},
-  {'hrsh7th/cmp-buffer', branch = 'main'},
-  {'hrsh7th/cmp-nvim-lua', branch = 'main'},
+  -- {'hrsh7th/nvim-cmp', branch = 'main'},
+  -- {'hrsh7th/cmp-buffer', branch = 'main'},
+  -- {'hrsh7th/cmp-nvim-lua', branch = 'main'},
   -- {'hrsh7th/cmp-nvim-lsp', branch = 'main'},
   -- {'hrsh7th/cmp-nvim-lsp-signature-help', branch = 'main'},
-  {'hrsh7th/cmp-path', branch = 'main'},
-  'saadparwaiz1/cmp_luasnip',
-  {
-          'petertriho/cmp-git',
-          dependencies = "nvim-lua/plenary.nvim",
-          config = function()
-                  require("cmp_git").setup()
-          end
-  },
-  {'PaterJason/cmp-conjure', ft = 'clojure'},
+  -- {'hrsh7th/cmp-path', branch = 'main'},
+  -- 'saadparwaiz1/cmp_luasnip',
+  -- {
+  --         'petertriho/cmp-git',
+  --         dependencies = "nvim-lua/plenary.nvim",
+  --         config = function()
+  --                 require("cmp_git").setup()
+  --         end
+  -- },
+  -- {'PaterJason/cmp-conjure', ft = 'clojure'},
   {"L3MON4D3/LuaSnip", tag = "v1.*"},
   -- {
   --   "folke/trouble.nvim",
@@ -103,14 +95,6 @@ return {
   -- -- fixes
   'antoinemadec/FixCursorHold.nvim',
   'gioele/vim-autoswap', -- get rid of annoying messages when changing files
-
-  -- -- tmux
-  {
-      "aserowy/tmux.nvim",
-      config = function() require("tmux").setup() end
-  },
-  -- 'tmux-plugins/vim-tmux', -- for editing tmux.conf
-  -- 'roxma/vim-tmux-clipboard',
 
   -- -- specific languages
   -- {'neo4j-contrib/cypher-vim-syntax', ft = 'cypher'},

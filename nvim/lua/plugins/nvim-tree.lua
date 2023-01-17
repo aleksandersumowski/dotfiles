@@ -4,7 +4,7 @@ return  {
                 {'<leader>d', ':NvimTreeToggle<CR>'},
                 {'<leader>f', ':NvimTreeFindFile<CR>'}
         },
-        config = {
+        opts = {
                 respect_buf_cwd = true,
                 update_cwd = true,
                 update_focused_file = {
