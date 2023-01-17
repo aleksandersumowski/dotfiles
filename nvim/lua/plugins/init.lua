@@ -1,44 +1,14 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-
-return require('lazy').setup({
+return {
   -- {"akinsho/toggleterm.nvim", tag = '*', config = function()
   --         require("toggleterm").setup{ }
   -- end},
   -- util,
-  'nvim-lua/plenary.nvim',
-  'nvim-lua/popup.nvim',
   -- { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "jose-elias-alvarez/null-ls.nvim", "jayp0521/mason-null-ls.nvim", "j-hui/fidget.nvim" },
 
   -- navigate
-  {'nvim-tree/nvim-tree.lua',
-       config = function()
-               require('nvim-tree').setup {
-                       respect_buf_cwd = true,
-                       update_cwd = true,
-                       update_focused_file = {
-                               enable = true,
-                               update_cwd = true
-                       },
-               }
-       end
-       },
 
   -- {'ahmedkhalf/project.nvim', branch = 'main' }
-  {'nvim-telescope/telescope.nvim', branch = '0.1.x' },
 
-  {'nvim-telescope/telescope-fzf-native.nvim', branch = 'main', build = 'make' },
   -- {
   --   "AckslD/nvim-neoclip.lua",
   --   dependencies = {
@@ -77,7 +47,6 @@ return require('lazy').setup({
   -- -- colours!!!
   {'rktjmp/lush.nvim', branch = 'main' },
   {'npxbr/gruvbox.nvim', branch = 'main' },
-  'shaunsingh/nord.nvim',
 
   -- ide
   {
@@ -170,4 +139,4 @@ return require('lazy').setup({
           require('leap').add_default_mappings()
   end}
 
-})
+}

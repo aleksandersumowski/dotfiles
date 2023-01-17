@@ -49,14 +49,28 @@ vim.g["conjure#log#botright"] = true
 vim.g.conjure_log_blacklist = {"up", "ret", "ret-multiline", "load-file", "eval"}
 vim.g["conjure#log#wrap"] = true
 
-require('plugins')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+
+require('lazy').setup('plugins')
+
 -- require('vgit').setup()
 -- require('gitsigns').setup()
-require("which-key").setup {}
+-- require("which-key").setup {}
 
 -- my custom plugin setups
-require("plugins.telescope").setup()
-require('plugins.treesitter').setup()
+-- require('config.treesitter').setup()
 -- require('plugins.lsp').setup()
 -- require('plugins.cmp').setup()
 vim.api.nvim_set_keymap("n", "gf", ":e <cfile><CR>", { noremap = true, }) -- create non-existing files when `gf`
@@ -81,8 +95,6 @@ vim.keymap.set('n','<leader><tab>', ':Telescope buffers<CR>')
 vim.keymap.set('n','<leader><space>', ':Telescope builtin<CR>')
 vim.keymap.set('n','<leader>a', ':Telescope live_grep theme=ivy<CR>')
 vim.keymap.set('n','<leader>i', ':Telescope git_files<CR>')
-vim.keymap.set('n','<leader>d', ':NvimTreeToggle<CR>')
-vim.keymap.set('n','<leader>f', ':NvimTreeFindFile<CR>')
 vim.keymap.set('n','<leader>s', ':source $MYVIMRC<CR>')
 vim.keymap.set('n','gds', '<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>')
 vim.keymap.set('n','gws', '<cmd>lua require"settings.telescope".lsp_workspace_symbols()<CR>')
@@ -108,8 +120,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         command = "silent! lua vim.highlight.on_yank()",
         group = yankGrp,
 })
-
-vim.cmd[[colorscheme nord]]
 
 vim.api.nvim_create_autocmd(
 "BufWritePre",
