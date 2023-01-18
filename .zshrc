@@ -19,19 +19,21 @@ setopt hist_ignore_all_dups hist_save_no_dups notify
 unsetopt beep
 ZSH_THEME="robbyrussell"
 plugins=(
-fzf
-git
-kubectl
-zoxide
-zsh-vi-mode
-# brew
-# last-working-dir
-# docker
-# helm
-# terraform
-# vi-mode
+        fzf
+        git
+        kubectl
+        zoxide
+        zsh-vi-mode
+        zsh-autosuggestions
+        # brew
+        # last-working-dir
+        # docker
+        # helm
+        # terraform
+        # vi-mode
 )
 # extra config
+export EDITOR="/usr/local/bin/nvim"
 source $ZSH/oh-my-zsh.sh
 
 export HISTFILE="$HOME/.zsh_history"
@@ -67,6 +69,5 @@ bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^?' backward-delete-char
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-PS1='$(kube_ps1)'$PS1
+eval "$(starship init zsh)"
 
