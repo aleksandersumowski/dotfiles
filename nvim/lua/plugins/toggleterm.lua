@@ -1,1 +1,1 @@
-return {"akinsho/toggleterm.nvim", tag = '*', config = true}
+return {"akinsho/toggleterm.nvim", version = '~v3', config = true}

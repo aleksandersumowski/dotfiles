@@ -69,7 +69,7 @@ return {
   --         end
   -- },
   -- {'PaterJason/cmp-conjure', ft = 'clojure'},
-  {"L3MON4D3/LuaSnip", tag = "v1.*"},
+  {"L3MON4D3/LuaSnip", version = "~v1"},
   -- {
   --   "folke/trouble.nvim",
   --   dependencies = "kyazdani42/nvim-web-devicons",
@@ -99,7 +99,7 @@ return {
   -- -- specific languages
   -- {'neo4j-contrib/cypher-vim-syntax', ft = 'cypher'},
   {'bakpakin/fennel.vim', ft='fennel'},
-  {'Olical/aniseed', tag = '*' },
+  {'Olical/aniseed', version = '~v3' },
   {'kovisoft/paredit', ft = 'clojure' },
   -- {'clojure-vim/vim-jack-in', ft = 'clojure' },
   -- {'udalov/kotlin-vim', branch = 'master'},
