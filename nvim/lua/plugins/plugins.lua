@@ -22,4 +22,15 @@ return {
   { "echasnovski/mini.animate", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
   { "folke/noice.nvim", enabled = false },
+  {
+    "nvim-neo-tree/neo-tree.nvim", -- disable the keymap to grep files
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({ dir = require("lazyvim.util").get_root(), reveal = true })
+        end,
+      },
+    },
+  },
 }
