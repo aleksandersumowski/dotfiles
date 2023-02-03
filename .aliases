@@ -15,5 +15,4 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias more='bat'
 alias ls='exa'
-alias cd='z'
 alias kg='kubectl get'

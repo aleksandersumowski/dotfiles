@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.foldenable = false
+vim.opt.shada = vim.opt.shada + "r/mnt/extdisk"

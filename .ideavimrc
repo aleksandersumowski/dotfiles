@@ -78,7 +78,7 @@ nnoremap <leader>so :action Scala.ShowImplicits<CR>
 nnoremap <leader>sd :action QuickImplementations<CR>
 
 " Types
-nnoremap K :action Scala.TypeInfo<CR>
+nnoremap K :action TypeInfo<CR>
 vmap K :action Scala.TypeInfo<CR>
 
 " Search
