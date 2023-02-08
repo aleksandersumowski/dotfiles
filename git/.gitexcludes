@@ -26,3 +26,7 @@ profiles.clj
 .gradle
 out/
 .DS_Store
+.settings/
+.classpath
+.factorypath
+.project

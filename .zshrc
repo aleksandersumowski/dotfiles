@@ -234,3 +234,4 @@ bindkey '^g' fzf-git-checkout
 bindkey '^b' fzf-git-branch
 # bindkey -M vicmd 'v' edit-command-line
 eval "$(starship init zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
