@@ -16,14 +16,14 @@ return {
   "mbbill/undotree",
   "tpope/vim-rsi", -- readline mappings in insert and command modes,
   "tpope/vim-abolish", -- coercion camel/snake/etc,
-  "tpope/vim-unimpaired",
+  {"tpope/vim-unimpaired", event = "VeryLazy"},
   { "kovisoft/paredit", ft = "clojure" },
   { "tmux-plugins/vim-tmux", event = "VeryLazy" },
   { "echasnovski/mini.animate", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
   { "folke/noice.nvim", enabled = false },
   {
-    "nvim-neo-tree/neo-tree.nvim", -- disable the keymap to grep files
+    "nvim-neo-tree/neo-tree.nvim",
     keys = {
       {
         "<leader>fe",
