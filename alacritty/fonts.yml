@@ -2,8 +2,9 @@
 font:
   # Normal (roman) font face
   normal:
+      # family: "MesloLGS NF"
     family: "JetBrainsMono Nerd Font Mono"
-    style: Medium
+  #   style: Medium
 
   # Bold font face
   bold:
