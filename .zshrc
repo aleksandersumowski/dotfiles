@@ -194,7 +194,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 # #       if [ -z "$TMUX" ]; then exec tmux -2 new-session -A -s main; fi
 # # esac
 # zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ##autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
 # autoload -Uz compinit
@@ -243,7 +242,7 @@ bindkey '^b' fzf-git-branch
 # export STARSHIP_LOG=trace starship timings
 # eval "$(starship init zsh)"
 # export STARSHIP_LOG=trace starship timings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 bindkey '^b' fzf-git-branch
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

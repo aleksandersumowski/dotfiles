@@ -16,12 +16,13 @@ return {
   "mbbill/undotree",
   "tpope/vim-rsi", -- readline mappings in insert and command modes,
   "tpope/vim-abolish", -- coercion camel/snake/etc,
-  {"tpope/vim-unimpaired", event = "VeryLazy"},
+  { "tpope/vim-unimpaired", event = "VeryLazy" },
   { "kovisoft/paredit", ft = "clojure" },
   { "tmux-plugins/vim-tmux", event = "VeryLazy" },
   { "echasnovski/mini.animate", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
   { "folke/noice.nvim", enabled = false },
+  { "akinsho/git-conflict.nvim", event = false, dependencies = { "https://gitlab.com/yorickpeterse/nvim-pqf" } },
   {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {

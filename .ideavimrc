@@ -70,12 +70,12 @@ nnoremap <leader>F :action ReformatCode<CR>
 " GoTo
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gr :action FindUsages<CR>
-nnoremap <leader>gi :action GotoImplementation<CR>
-nnoremap <leader>gs :action ActivateStructureToolWindow<CR>
-nnoremap <leader>sp :action ParameterInfo<CR>
-nnoremap <leader>si :action Scala.ShowImplicitArguments<CR>
-nnoremap <leader>so :action Scala.ShowImplicits<CR>
-nnoremap <leader>sd :action QuickImplementations<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action ActivateStructureToolWindow<CR>
+nnoremap sp :action ParameterInfo<CR>
+nnoremap si :action Scala.ShowImplicitArguments<CR>
+nnoremap so :action Scala.ShowImplicits<CR>
+nnoremap sd :action QuickImplementations<CR>
 
 " Types
 nnoremap K :action TypeInfo<CR>
