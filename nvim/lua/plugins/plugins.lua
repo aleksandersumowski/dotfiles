@@ -16,6 +16,7 @@ return {
   "mbbill/undotree",
   "tpope/vim-rsi", -- readline mappings in insert and command modes,
   "tpope/vim-abolish", -- coercion camel/snake/etc,
+  { import = "plugins.extras.lang.rust" },
   { "tpope/vim-unimpaired", event = "VeryLazy" },
   { "kovisoft/paredit", ft = "clojure" },
   { "tmux-plugins/vim-tmux", event = "VeryLazy" },
@@ -23,7 +24,7 @@ return {
   { "rcarriga/nvim-notify", enabled = false },
   { "folke/noice.nvim", enabled = false },
   { "akinsho/git-conflict.nvim", event = false, dependencies = { "https://gitlab.com/yorickpeterse/nvim-pqf" } },
-  { "neovim/nvim-lspconfig", opts = { autoformat = false}},
+  { "neovim/nvim-lspconfig", opts = { autoformat = false } },
   {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
