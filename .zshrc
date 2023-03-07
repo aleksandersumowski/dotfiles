@@ -145,8 +145,6 @@ unset key
 #
 # setopt XTRACE
 
-source "${HOME}/.aliases"
-source "${HOME}/.paths"
 # source "${HOME}/.sdkman/bin/sdkman-init.sh"
 function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
@@ -234,6 +232,8 @@ fzf-git-checkout() {
         git checkout $branch;
     fi
 }
+source "${HOME}/.aliases"
+source "${HOME}/.paths"
 zle -N fzf-git-checkout
 zle -N fzf-git-branch
 bindkey '^g' fzf-git-checkout

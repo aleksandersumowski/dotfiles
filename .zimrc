@@ -42,7 +42,7 @@ zmodule completion
 
 zmodule ohmyzsh/ohmyzsh --root plugins/git
 zmodule ohmyzsh/ohmyzsh --root plugins/kubectl
-zmodule skywind3000/z.lua --on-pull 'lua z.lua --init zsh enhanced once >! init.zsh'
+zmodule kiesman99/zim-zoxide
 zmodule romkatv/powerlevel10k --use degit
 zmodule jeffreytse/zsh-vi-mode
 

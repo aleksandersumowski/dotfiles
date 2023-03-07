@@ -16,3 +16,4 @@ export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias more='bat'
 alias ls='exa'
 alias kg='kubectl get'
+alias kgpy='kubectl get pods -o yaml'
