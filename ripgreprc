@@ -1,9 +1,0 @@
---type-add
-tfstate:*.tfstate
---type-add
-tfstate:*.tfstate.backup
---type-add
-cypher:*.cypher
-
---type-not
-tfstate

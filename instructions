@@ -1,7 +1,0 @@
-brew bundle ;; for Brewfile installation
-add homebrew zsh to /etc/shell
-$(brew --prefix)/opt/fzf/install
-# install tmux plugin manager
-# install tmux plugins
-
-# change install pythons to use venv
