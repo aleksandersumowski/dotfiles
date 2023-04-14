@@ -145,7 +145,7 @@ unset key
 #
 # setopt XTRACE
 
-# source "${HOME}/.sdkman/bin/sdkman-init.sh"
+source "${HOME}/.sdkman/bin/sdkman-init.sh"
 function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
 }
@@ -168,13 +168,18 @@ plugins=(
         # vi-mode
 )
 # extra config
-export EDITOR="/usr/local/bin/nvim"
 
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 setopt EXTENDED_HISTORY
-export EDITOR="/usr/local/bin/nvim"
+
+if test -f "/usr/local/bin/nvim"; then
+    export EDITOR="/usr/local/bin/nvim"
+  else
+    export EDITOR="/opt/homebrew/bin/nvim"
+fi
+export GIT_EDITOR=$EDITOR
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 export KEYTIMEOUT=1
@@ -232,6 +237,22 @@ fzf-git-checkout() {
         git checkout $branch;
     fi
 }
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+
+function nvims() {
+  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+zle -N nvims
+bindkey '^a' nvims
 source "${HOME}/.aliases"
 source "${HOME}/.paths"
 zle -N fzf-git-checkout

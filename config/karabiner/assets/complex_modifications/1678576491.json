@@ -1,0 +1,1 @@
+{"title":"","rules":[{"description":"","manipulators":[{"type":"basic","from":{"simultaneous":[{"key_code":"s"}],"key_code":"a"},"to_if_held_down":[{"repeat":true,"modifiers":["left_gui"]}]}]}]}

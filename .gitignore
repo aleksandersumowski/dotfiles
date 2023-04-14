@@ -4,4 +4,6 @@ core.edn
 .idea
 *.iml
 .cpcache
-nvim/plugin/packer_compiled.lua
+config/gh/hosts.yml
+exercism
+github-copilot
