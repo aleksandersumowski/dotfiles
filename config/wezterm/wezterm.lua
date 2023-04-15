@@ -1,15 +1,9 @@
 local wezterm = require 'wezterm';
 return {
   color_scheme = "nord",
-  -- colors = {
-  --   background = "#0c0e14",
-  -- },
-  window_decorations = "NONE",
+  -- window_decorations = "NONE", -- conflicts with rectangle
   font = wezterm.font("JetBrains Mono"),
   font_size = 10.0,
-  -- dpi = 192.0,
-  font_antialias = "Subpixel", -- None, Greyscale, Subpixel
-  font_hinting = "Full",  -- None, Vertical, VerticalSubpixel, Full
   leader = { key="a", mods="CTRL" },
   hide_tab_bar_if_only_one_tab = true,
   keys = {
