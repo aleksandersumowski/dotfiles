@@ -3,7 +3,7 @@ return {
   color_scheme = "nord",
   -- window_decorations = "NONE", -- conflicts with rectangle
   font = wezterm.font("JetBrains Mono"),
-  font_size = 10.0,
+  font_size = 12.0,
   leader = { key="a", mods="CTRL" },
   hide_tab_bar_if_only_one_tab = true,
   keys = {
