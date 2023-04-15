@@ -5,6 +5,10 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("nvim-tree").setup({
+        update_focused_file = {
+          enable = true,
+          update_root = true
+        },
         actions = {
           open_file = {
             resize_window = false,
@@ -12,10 +16,9 @@ return {
         },
       })
     end,
-    cmd = { "NvimTreeRefresh" },
+    cmd = { "NvimTreeFindFileToggle" },
     keys = {
-      { "<leader>e", function() vim.cmd([[NvimTreeToggle]]) end, desc = "Toggle nvim-tree" },
-      { "<C-f>", function() vim.cmd([[NvimTreeFindFile]]) end, desc = "Show current file in nvim-tree" },
+      { "<leader>e", function() vim.cmd([[NvimTreeFindFileToggle]]) end, desc = "Show current file in nvim-tree" }
     },
   },
   {
