@@ -36,12 +36,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       -- add tsx and treesitter
-      vim.list_extend(
-        opts.ensure_installed,
-        {
-          "clojure"
-        }, 1, #opts.ensure_installed
-      )
+      vim.list_extend(opts.ensure_installed, {
+        "clojure",
+      }, 1, #opts.ensure_installed)
     end,
   },
   "mrjones2014/smart-splits.nvim",
@@ -50,26 +47,4 @@ return {
   -- { "rcarriga/nvim-notify", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
   { "neovim/nvim-lspconfig", opts = { autoformat = false } },
-  { "nvim-tree/nvim-tree.lua",
-    keys = {
-      {
-        "<leader>fe",
-        function()
-          require("nvim-tree.api").tree.toggle({find_file = true})
-        end,
-      },
-    },
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-    keys = {
-      {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({ dir = require("lazyvim.util").get_root(), reveal = true })
-        end,
-      },
-    },
-  },
 }
