@@ -5,3 +5,5 @@
 vim.opt.foldenable = false
 vim.opt.shada = vim.opt.shada + "r/mnt/extdisk"
 vim.g.maplocalleader = ","
+
+-- vim.g['conjure#mapping#log_jump_to_latest'] = true
