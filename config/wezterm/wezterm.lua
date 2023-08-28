@@ -33,7 +33,8 @@ return {
     { key = "8", mods = "LEADER",       action=wezterm.action{ActivateTab=7}},
     { key = "9", mods = "LEADER",       action=wezterm.action{ActivateTab=8}},
     { key = "&", mods = "LEADER|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=true}}},
-    { key = "d", mods = "LEADER",       action=wezterm.action{CloseCurrentPane={confirm=true}}},
+    -- { key = "d", mods = "LEADER",       action=wezterm.action{CloseCurrentPane={confirm=true}}},
     { key = "x", mods = "LEADER",       action=wezterm.action{CloseCurrentPane={confirm=true}}},
+    { key = "d", mods = "LEADER",       action=wezterm.action.ShowLauncherArgs{ flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS|COMMANDS'}},
   },
 }

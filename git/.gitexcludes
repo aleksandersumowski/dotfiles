@@ -24,7 +24,6 @@ pom.xml.asc
 profiles.clj
 .python-version
 .gradle
-out/
 .DS_Store
 .settings/
 .classpath

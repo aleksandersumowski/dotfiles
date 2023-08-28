@@ -4,7 +4,7 @@ set surround
 set commentary
 set NERDTree
 
-let mapleader = ","
+let mapleader = " "
 " :actionlist for all commands
 set multiple-cursors
 set history=1000
@@ -27,7 +27,6 @@ map g<c-n> g<a-p>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 
-nnoremap <c-w>j :action Activatesbt-shell-toolwindowToolWindow<CR>
 
 nnoremap <C-l> :<C-u>nohlsearch<CR><C-l>
 
@@ -45,6 +44,7 @@ nnoremap <leader>zz :action ToggleZenMode<CR>
 
 
 " Refactorings
+nnoremap <leader>nc :action NewClass<CR>
 nnoremap <leader>oi :action OptimizeImports<CR>
 nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>rf :action RenameFile<CR>
@@ -82,6 +82,7 @@ nnoremap K :action TypeInfo<CR>
 vmap K :action Scala.TypeInfo<CR>
 
 " Search
+nnoremap rf :action RecentFiles<CR>
 nnoremap <leader>fs :action GotoSymbol<CR>
 nnoremap <leader>ff :action GotoFile<CR>
 nnoremap <leader>fc :action GotoClass<CR>
