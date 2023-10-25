@@ -186,7 +186,7 @@ export KEYTIMEOUT=1
 export AWS_REGION=eu-west-1
 export LANG="en_US.UTF-8"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/usr/local/bin/:$PYENV_ROOT/bin:$PATH"
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
 export XDG_CONFIG_HOME=$HOME/.config
@@ -257,14 +257,15 @@ source "${HOME}/.aliases"
 source "${HOME}/.paths"
 zle -N fzf-git-checkout
 zle -N fzf-git-branch
-bindkey '^g' fzf-git-checkout
-bindkey '^b' fzf-git-branch
+
 # bindkey -M vicmd 'v' edit-command-line
 # export STARSHIP_LOG=trace starship timings
 # eval "$(starship init zsh)"
 # export STARSHIP_LOG=trace starship timings
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-bindkey '^b' fzf-git-branch
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+bindkey '^g' fzf-git-checkout
+bindkey '^b' fzf-git-branch
+bindkey '^x' forward-word

@@ -6,6 +6,7 @@ return {
   font_size = 12.0,
   leader = { key="a", mods="CTRL" },
   hide_tab_bar_if_only_one_tab = true,
+  scrollback_lines = 100000,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
