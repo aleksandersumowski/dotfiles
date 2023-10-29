@@ -186,7 +186,12 @@ export KEYTIMEOUT=1
 export AWS_REGION=eu-west-1
 export LANG="en_US.UTF-8"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/usr/local/bin/:$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+  export PATH="/opt/homebrew/bin/:$PATH"
+else
+  export PATH="/usr/local/bin/:$PATH"
+fi
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
 export XDG_CONFIG_HOME=$HOME/.config
