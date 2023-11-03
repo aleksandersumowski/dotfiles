@@ -7,3 +7,4 @@ core.edn
 config/gh/hosts.yml
 exercism
 github-copilot
+config/nvim/lazy-lock.json
