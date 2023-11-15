@@ -110,6 +110,8 @@ nnoremap <c-i> :action Forward<cr>
 " Kubernetes
 nnoremap <leader>kt :action Kubernetes.HelmTemplateDiff
 " Navigation
+nnoremap ]t :action NextTab<cr>
+nnoremap [t :action PreviousTab<cr>
 nnoremap ]c :action GotoNextError<cr>
 nnoremap [c :action GotoPreviousError<cr>
 nnoremap ]h :action VcsShowNextChangeMarker<cr>

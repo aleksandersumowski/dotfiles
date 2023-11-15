@@ -25,9 +25,6 @@ setopt HIST_IGNORE_ALL_DUPS
 # Input/output
 #
 
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
-
 # Prompt for spelling correction of commands.
 #setopt CORRECT
 
@@ -174,12 +171,6 @@ export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 setopt EXTENDED_HISTORY
 
-if test -f "/usr/local/bin/nvim"; then
-    export EDITOR="/usr/local/bin/nvim"
-  else
-    export EDITOR="/opt/homebrew/bin/nvim"
-fi
-export GIT_EDITOR=$EDITOR
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 export KEYTIMEOUT=1
@@ -192,20 +183,12 @@ if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
 else
   export PATH="/usr/local/bin/:$PATH"
 fi
+
+export EDITOR="nvim"
+export GIT_EDITOR=$EDITOR
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
 export XDG_CONFIG_HOME=$HOME/.config
-#
-# ##we don't need terminals without tmux
-# # alias tmux="env TERM=xterm-256color tmux"
-# # case $- in *i*)
-# #       if [ -z "$TMUX" ]; then exec tmux -2 new-session -A -s main; fi
-# # esac
-# zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-
-##autoload -Uz zmv ## zmv - mass move tool, supports wildcards/patters/etc
-# autoload -Uz compinit
-# compinit
 
 bindkey -v
 bindkey '^a' beginning-of-line
