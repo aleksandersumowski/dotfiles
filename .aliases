@@ -4,7 +4,8 @@ alias grep='grep --color=auto'
 alias gup='git pull --rebase --autostash'
 alias gupm='git pull --rebase --autostash origin master && git rebase --autostash master'
 
-alias vim='NVIM_APPNAME=nvims/astronvim-origin nvim'
+alias v='nvim'
+alias vim='nvim'
 
 alias lein="rlwrap lein"
 

@@ -1,0 +1,6 @@
+[submodule "config/config/nvims/astrovim-origin"]
+	path = config/config/nvims/astrovim-origin
+	url = https://github.com/AstroNvim/AstroNvim
+[submodule "config/config/nvims/astronvim-origin"]
+	path = config/config/nvims/astronvim-origin
+	url = https://github.com/AstroNvim/AstroNvim
