@@ -14,12 +14,17 @@ return {
     },
   },
   { "CarloWood/vim-plugin-AnsiEsc" },
-  {"m00qek/baleia.nvim", init = function()
-    require('baleia').setup { }
-  end}, 
-  { "johmsalas/text-case.nvim", init = function()
-    require('textcase').setup {}
-  end }
+  {
+    "m00qek/baleia.nvim",
+    init = function()
+      require("baleia").setup({})
+    end,
+  },
+  {
+    "johmsalas/text-case.nvim",
+    init = function()
+      require("textcase").setup({})
+    end,
+  },
   -- ... import any community contributed plugins here
-}
 }
