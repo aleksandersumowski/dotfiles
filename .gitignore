@@ -8,3 +8,4 @@ config/gh/hosts.yml
 exercism
 github-copilot
 config/nvim/lazy-lock.json
+config/gcloud
