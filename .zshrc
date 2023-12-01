@@ -5,72 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by interactive shells
-#
-
-# -----------------
-# Zsh configuration
-# -----------------
-
-#
-# History
-#
-
-# Remove older command from the history if a duplicate is to be added.
-setopt HIST_IGNORE_ALL_DUPS
-
-#
-# Input/output
-#
-
-# Prompt for spelling correction of commands.
-#setopt CORRECT
-
-# Customize spelling correction prompt.
-#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
-# -----------------
-# Zim configuration
-# -----------------
-
-# Use degit instead of git as the default tool to install and update modules.
-#zstyle ':zim:zmodule' use 'degit'
-
-# --------------------
-# Module configuration
-# --------------------
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
+#Append `../` to your input for each `.` you type after an initial `..`
+zstyle ':zim:input' double-dot-expand yes
 
 # Set a custom terminal title format using prompt expansion escape sequences.
 # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
 # If none is provided, the default '%n@%m: %~' is used.
 #zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
 
 # Disable automatic widget re-binding on each precmd. This can be set when
 # zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
@@ -80,18 +24,9 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
-#
-# zsh-syntax-highlighting
-#
-
 # Set what highlighters will be used.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
 
 # ------------------
 # Initialize modules
@@ -119,10 +54,6 @@ source ${ZIM_HOME}/init.zsh
 # Post-init module configuration
 # ------------------------------
 
-#
-# zsh-history-substring-search
-#
-
 zmodload -F zsh/terminfo +p:terminfo
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
@@ -132,22 +63,12 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-# zmodload zsh/datetime
-# setopt PROMPT_SUBST
-# PS4='+$EPOCHREALTIME %N:%i> '
-#
-# logfile=$(mktemp zsh_profile.XXXXXXXX)
-# echo "Logging to $logfile"
-# exec 3>&2 2>$logfile
-#
-# setopt XTRACE
-
-source "${HOME}/.sdkman/bin/sdkman-init.sh"
+# source "${HOME}/.sdkman/bin/sdkman-init.sh"
 function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
 }
 export ZSH=$HOME/.oh-my-zsh
-setopt hist_ignore_all_dups hist_save_no_dups notify
+setopt HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS NOTIFY
 unsetopt beep
 ZSH_THEME="robbyrussell"
 plugins=(
@@ -171,6 +92,12 @@ export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 setopt EXTENDED_HISTORY
 
+if test -f "/usr/local/bin/nvim"; then
+    export EDITOR="/usr/local/bin/nvim"
+  else
+    export EDITOR="/opt/homebrew/bin/nvim"
+fi
+export GIT_EDITOR=$EDITOR
 export BROWSER="firefox"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 export KEYTIMEOUT=1
@@ -183,14 +110,12 @@ if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
 else
   export PATH="/usr/local/bin/:$PATH"
 fi
-
-export EDITOR="nvim"
-export GIT_EDITOR=$EDITOR
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
 export XDG_CONFIG_HOME=$HOME/.config
 
 bindkey -v
+
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^?' backward-delete-char
@@ -228,28 +153,11 @@ fzf-git-checkout() {
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 
-function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
-zle -N nvims
-bindkey '^a' nvims
 source "${HOME}/.aliases"
 source "${HOME}/.paths"
 zle -N fzf-git-checkout
 zle -N fzf-git-branch
 
-# bindkey -M vicmd 'v' edit-command-line
-# export STARSHIP_LOG=trace starship timings
-# eval "$(starship init zsh)"
-# export STARSHIP_LOG=trace starship timings
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
