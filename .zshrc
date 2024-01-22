@@ -63,7 +63,7 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-# source "${HOME}/.sdkman/bin/sdkman-init.sh"
+source "${HOME}/.sdkman/bin/sdkman-init.sh"
 function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
 }
@@ -99,6 +99,7 @@ if test -f "/usr/local/bin/nvim"; then
 fi
 export GIT_EDITOR=$EDITOR
 export BROWSER="firefox"
+export GH_BROWSER="chrome"
 export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 export KEYTIMEOUT=1
 export AWS_REGION=eu-west-1
