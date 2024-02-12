@@ -95,6 +95,8 @@ vmap <leader>fr :action ReplaceInPath<CR>
 
 " Test and Run
 nnoremap <leader>gt :action GotoTest<CR>
+nnoremap <leader>dd :action Debug<CR>
+" nnoremap <leader>dd :action Debug<CR>
 nnoremap <leader>tn :action RunClass<CR>
 nnoremap <leader>tl :action Rerun<CR>
 nnoremap <leader>tf :action RerunFailedTests<CR>
