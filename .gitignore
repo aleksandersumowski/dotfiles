@@ -9,3 +9,5 @@ exercism
 github-copilot
 config/nvim/lazy-lock.json
 config/gcloud
+.DS_Store
+emacs

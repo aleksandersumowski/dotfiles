@@ -9,7 +9,8 @@ return {
     "johmsalas/text-case.nvim",
     init = function() require("textcase").setup {} end,
   },
-  "HiPhish/guile.vim",
+  {"HiPhish/guile.vim"},
+  { "Olical/conjure", ft = "scheme" }
   -- ... import any community contributed plugins here
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
