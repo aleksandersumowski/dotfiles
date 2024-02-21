@@ -1,4 +1,5 @@
 set highlightedyank
+set trackactionids
 set ideajoin
 set surround
 set commentary
