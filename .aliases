@@ -15,7 +15,7 @@ alias top="sudo htop"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias more='bat --theme=Nord'
-alias ls='exa'
+alias ls='eza'
 alias kg='kubectl get'
 alias kgpy='kubectl get pods -o yaml'
 alias e='emacsclient --create-frame --alternate-editor=""'

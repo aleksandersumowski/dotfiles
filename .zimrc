@@ -36,16 +36,16 @@ zmodule utility
 
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
-# Enables and configures smart and extensive tab completion.
-# completion must be sourced after all modules that add completion definitions.
-zmodule completion
 
+zmodule completion
 zmodule ohmyzsh/ohmyzsh --root plugins/git
 zmodule ohmyzsh/ohmyzsh --root plugins/kubectl
+zmodule ohmyzsh/ohmyzsh --root plugins/gcloud
 zmodule kiesman99/zim-zoxide
 zmodule romkatv/powerlevel10k --use degit
 zmodule jeffreytse/zsh-vi-mode
 
+# zmodule asdf
 #
 # Modules that must be initialized last
 #

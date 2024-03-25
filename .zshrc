@@ -63,7 +63,7 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-source "${HOME}/.sdkman/bin/sdkman-init.sh"
+# source "${HOME}/.sdkman/bin/sdkman-init.sh"
 function source_if_exists {
     test -e $1 &&  source $1 || print  $1 " not found"
 }
@@ -78,6 +78,7 @@ plugins=(
         zoxide
         zsh-vi-mode
         zsh-autosuggestions
+        gcloud
         # brew
         # last-working-dir
         # docker
@@ -104,12 +105,10 @@ export TMUX_PLUGIN_MANAGER_HOME="${HOME}/.tmux/plugins/tpm"
 export KEYTIMEOUT=1
 export AWS_REGION=eu-west-1
 export LANG="en_US.UTF-8"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
-  export PATH="/opt/homebrew/bin/:$PATH"
+  export PATH="$PATH:/opt/homebrew/bin/"
 else
-  export PATH="/usr/local/bin/:$PATH"
+  export PATH="$PATH:/usr/local/bin/"
 fi
 export ZVM_VI_SURROUND_BINDKEY=s-prefix
 export ZVM_VI_EDITOR=$EDITOR
@@ -160,9 +159,12 @@ zle -N fzf-git-checkout
 zle -N fzf-git-branch
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+zvm_after_init_commands+=('eval "$(atuin init zsh --disable-up-arrow)"')
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(/usr/local/bin/mise activate zsh)"
 
 bindkey '^g' fzf-git-checkout
 bindkey '^b' fzf-git-branch
 bindkey '^x' forward-word
+export DIRENV_LOG_FORMAT=
